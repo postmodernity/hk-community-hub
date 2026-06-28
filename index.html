@@ -311,11 +311,20 @@
   }
   .about-list li{
     display:flex;
-    gap:12px;
-    font-size:0.95rem;
-    color:var(--ink-soft);
+    flex-direction:column;
+    gap:3px;
   }
-  .about-list b{color:var(--violet-dark);}
+  .about-list b{
+    color:var(--violet);
+    font-size:0.74rem;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  .about-list span{
+    color:var(--ink-soft);
+    font-size:0.97rem;
+  }
   @media (max-width:880px){
     .about-grid{grid-template-columns:1fr;}
   }
@@ -615,17 +624,16 @@
       <p class="eyebrow">About the Hub</p>
       <h2>One platform, two cities, a shared sense of belonging</h2>
       <p>HK Community Hub @ UoS is a civic knowledge exchange platform run from the University of Sheffield, built to strengthen social integration, cultural participation and civic belonging among Hong Kong communities in Sheffield and the wider region, however long you've called the city home.</p>
-      <p>The Hub links the University with diasporic organisations, youth groups, cultural institutions and creative practitioners, drawing on established partnerships across the city. Rather than running isolated events, it builds a coordinated infrastructure: shared programming, an advisory group, and structured evaluation that turns each activity into evidence for what genuinely helps communities settle, connect and contribute.</p>
+      <p>The Hub links the University with Hong Kong community organisations, youth groups, cultural institutions and creative practitioners, drawing on established partnerships across the city. Rather than running isolated events, it builds a coordinated infrastructure: shared programming, an advisory group, and structured evaluation that turns each activity into evidence for what genuinely helps communities settle, connect and contribute.</p>
       <p>Funded through the University's Higher Education Innovation Funding (HEIF) for an initial twelve-month pilot, the Hub builds directly on the existing Project Sifu and a track record of Hong Kong community cultural programming in Sheffield.</p>
     </div>
     <div class="about-card">
       <h3>At a glance</h3>
       <ul class="about-list">
-        <li><b>Runs</b><span>August 2026 &ndash; July 2027 (Year 1 pilot)</span></li>
         <li><b>Led by</b><span>School of Languages, Arts and Societies, University of Sheffield</span></li>
         <li><b>Funded by</b><span>Higher Education Innovation Funding (HEIF)</span></li>
         <li><b>Built on</b><span>Project Sifu and existing Hong Kong community programming in Sheffield</span></li>
-        <li><b>Feeds into</b><span>A REF impact case study on diasporic British&ndash;Hong Kong communities</span></li>
+        <li><b>Feeds into</b><span>A REF impact case study on Hong Kong communities in Sheffield</span></li>
       </ul>
     </div>
   </div>
