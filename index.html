@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HK Community Hub @ UoS</title>
+<meta name="description" content="A civic knowledge exchange platform connecting the University of Sheffield with Hong Kong communities through culture, storytelling and shared programming.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#440099">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
+
+<!-- Canonical: update to the live Cloudflare Pages or custom domain URL once it's chosen -->
+<link rel="canonical" href="https://hk-community-hub.pages.dev/">
+
+<!-- Open Graph / social share preview -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HK Community Hub @ UoS">
+<meta property="og:title" content="HK Community Hub @ UoS">
+<meta property="og:description" content="Connecting Hong Kong communities through culture, storytelling and creative participation, at the University of Sheffield.">
+<meta property="og:image" content="https://hk-community-hub.pages.dev/assets/og-image.png">
+<meta property="og:url" content="https://hk-community-hub.pages.dev/">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HK Community Hub @ UoS">
+<meta name="twitter:description" content="Connecting Hong Kong communities through culture, storytelling and creative participation, at the University of Sheffield.">
+<meta name="twitter:image" content="https://hk-community-hub.pages.dev/assets/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --violet:#440099;
+    --violet-dark:#2E0066;
+    --violet-pale:#F0E6FA;
+    --violet-powder:#D9C2F0;
+    --ink:#2B2B2B;
+    --ink-soft:#5B5564;
+    --paper:#FAF9FC;
+    --white:#FFFFFF;
+    --rule:rgba(46,0,102,0.14);
+    --shadow:0 18px 40px -24px rgba(46,0,102,0.35);
+    --serif:"Source Serif 4", Georgia, serif;
+    --sans:"Source Sans 3", -apple-system, "Segoe UI", sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block;}
+  a{color:inherit;}
+  h1,h2,h3{
+    font-family:var(--serif);
+    line-height:1.15;
+    margin:0 0 0.5em;
+    color:var(--violet-dark);
+  }
+  p{margin:0 0 1em;}
+  .eyebrow{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--violet);
+    margin:0 0 0.9em;
+  }
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  :focus-visible{
+    outline:3px solid var(--violet);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 26px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:0.95rem;
+    text-decoration:none;
+    border:1.5px solid transparent;
+    transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary{
+    background:var(--white);
+    color:var(--violet-dark);
+  }
+  .btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 26px -14px rgba(0,0,0,0.45);
+  }
+  .btn-ghost{
+    border-color:rgba(255,255,255,0.55);
+    color:var(--white);
+  }
+  .btn-ghost:hover{
+    background:rgba(255,255,255,0.12);
+  }
+  .btn-solid{
+    background:var(--violet);
+    color:var(--white);
+  }
+  .btn-solid:hover{
+    background:var(--violet-dark);
+    transform:translateY(-2px);
+  }
+  .btn-outline{
+    border-color:var(--violet);
+    color:var(--violet);
+    background:transparent;
+  }
+  .btn-outline:hover{
+    background:var(--violet-pale);
+  }
+
+  /* ---------- header / nav (CSS-only mobile menu) ---------- */
+  .nav-toggle-checkbox{display:none;}
+  .site-header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(250,249,252,0.92);
+    backdrop-filter:saturate(160%) blur(8px);
+    border-bottom:1px solid var(--rule);
+  }
+  .header-inner{
+    max-width:1180px;
+    margin:0 auto;
+    padding:14px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+  }
+  .wordmark{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.18rem;
+    text-decoration:none;
+    color:var(--violet-dark);
+    white-space:nowrap;
+  }
+  .wordmark span{
+    font-family:var(--sans);
+    font-weight:500;
+    color:var(--violet);
+    font-size:0.85em;
+  }
+  .site-nav{
+    display:flex;
+    gap:28px;
+    font-size:0.95rem;
+    font-weight:500;
+  }
+  .site-nav a{
+    text-decoration:none;
+    color:var(--ink);
+    padding:6px 0;
+    border-bottom:2px solid transparent;
+  }
+  .site-nav a:hover{
+    border-bottom-color:var(--violet);
+    color:var(--violet-dark);
+  }
+  .header-cta{display:none;}
+  .nav-toggle-label{
+    display:none;
+    cursor:pointer;
+    font-size:1.5rem;
+    color:var(--violet-dark);
+    line-height:1;
+    padding:4px 8px;
+  }
+
+  @media (min-width:860px){
+    .header-cta{
+      display:inline-flex;
+      padding:9px 20px;
+      font-size:0.88rem;
+    }
+  }
+  @media (max-width:859px){
+    .nav-toggle-label{display:block;}
+    .site-nav{
+      position:absolute;
+      top:100%;
+      left:0;
+      right:0;
+      flex-direction:column;
+      background:var(--white);
+      padding:8px 24px 20px;
+      gap:4px;
+      border-bottom:1px solid var(--rule);
+      box-shadow:var(--shadow);
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.25s ease;
+    }
+    .site-nav a{padding:10px 0;}
+    .nav-toggle-checkbox:checked ~ .site-header .site-nav{
+      max-height:340px;
+    }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(165deg, var(--violet) 0%, var(--violet-dark) 100%);
+    color:var(--white);
+    padding:88px 0 0;
+  }
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+    max-width:680px;
+  }
+  .hero .eyebrow{color:var(--violet-powder);}
+  .hero h1{
+    color:var(--white);
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    margin-bottom:0.45em;
+  }
+  .hero-sub{
+    font-size:1.15rem;
+    color:rgba(255,255,255,0.88);
+    max-width:520px;
+  }
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin:28px 0 0;
+  }
+  .hero-skyline{
+    position:relative;
+    z-index:1;
+    width:100%;
+    height:auto;
+    margin-top:56px;
+    opacity:0.9;
+  }
+  .hero-skyline-wrap{
+    position:relative;
+  }
+  .hero-fade{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top, var(--violet-dark) 0%, rgba(46,0,102,0) 55%);
+    pointer-events:none;
+  }
+
+  /* ---------- generic section rhythm ---------- */
+  section{padding:84px 0;}
+  .section-head{
+    max-width:640px;
+    margin:0 0 48px;
+  }
+  .section-alt{background:var(--violet-pale);}
+
+  /* ---------- about ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.3fr 0.9fr;
+    gap:56px;
+    align-items:start;
+  }
+  .about-card{
+    background:var(--white);
+    border:1px solid var(--rule);
+    border-radius:18px;
+    padding:30px;
+    box-shadow:var(--shadow);
+  }
+  .about-card h3{font-size:1.05rem;}
+  .about-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .about-list li{
+    display:flex;
+    gap:12px;
+    font-size:0.95rem;
+    color:var(--ink-soft);
+  }
+  .about-list b{color:var(--violet-dark);}
+  @media (max-width:880px){
+    .about-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- strands (what we do) ---------- */
+  .strand-row{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+    position:relative;
+  }
+  .strand-row::before{
+    content:"";
+    position:absolute;
+    top:34px;
+    left:6%;
+    right:6%;
+    height:2px;
+    background:var(--violet-powder);
+    z-index:0;
+  }
+  .strand{
+    position:relative;
+    z-index:1;
+    background:var(--white);
+    border:1px solid var(--rule);
+    border-radius:16px;
+    padding:28px 24px;
+  }
+  .strand-mark{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:var(--violet);
+    color:var(--white);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--serif);
+    font-weight:700;
+    margin-bottom:18px;
+  }
+  .strand h3{font-size:1.08rem;}
+  .strand p{font-size:0.94rem;color:var(--ink-soft);margin-bottom:0;}
+  @media (max-width:880px){
+    .strand-row{grid-template-columns:1fr;}
+    .strand-row::before{display:none;}
+  }
+
+  /* ---------- partners ---------- */
+  .partner-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+  }
+  .partner-card{
+    border:1.5px solid var(--rule);
+    border-radius:14px;
+    padding:24px 18px;
+    text-align:center;
+    background:var(--white);
+    font-family:var(--serif);
+    font-weight:600;
+    color:var(--violet-dark);
+    font-size:0.98rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:96px;
+  }
+  @media (max-width:760px){
+    .partner-grid{grid-template-columns:repeat(2, 1fr);}
+  }
+  @media (max-width:480px){
+    .partner-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- get involved ---------- */
+  .involve-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+  }
+  .involve-card{
+    background:var(--white);
+    border:1px solid var(--rule);
+    border-radius:18px;
+    padding:32px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .involve-card h3{font-size:1.2rem;}
+  .involve-card p{color:var(--ink-soft);font-size:0.96rem;}
+  .form-slot{
+    margin-top:60px;
+    border:1.5px dashed var(--violet-powder);
+    border-radius:18px;
+    padding:46px 24px;
+    text-align:center;
+    color:var(--ink-soft);
+    background:var(--white);
+  }
+  @media (max-width:760px){
+    .involve-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- events ---------- */
+  .event-row{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .event-card{
+    background:var(--white);
+    border:1px solid var(--rule);
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .event-date{
+    background:var(--violet);
+    color:var(--white);
+    padding:14px 20px;
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:0.95rem;
+    letter-spacing:0.02em;
+  }
+  .event-body{padding:20px;}
+  .event-body h3{font-size:1.02rem;}
+  .event-body p{font-size:0.92rem;color:var(--ink-soft);margin-bottom:0;}
+  @media (max-width:880px){
+    .event-row{grid-template-columns:1fr;}
+  }
+
+  /* ---------- contact ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:start;
+  }
+  .contact-block{
+    background:var(--white);
+    border:1px solid var(--rule);
+    border-radius:18px;
+    padding:30px;
+  }
+  .contact-block p{font-size:0.95rem;color:var(--ink-soft);}
+  .contact-block strong{color:var(--violet-dark);}
+  @media (max-width:880px){
+    .contact-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- footer ---------- */
+  .site-footer{
+    background:var(--violet-dark);
+    color:rgba(255,255,255,0.82);
+    padding:48px 0 32px;
+    font-size:0.88rem;
+  }
+  .footer-top{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    padding-bottom:24px;
+    border-bottom:1px solid rgba(255,255,255,0.18);
+    margin-bottom:20px;
+  }
+  .footer-top strong{
+    color:var(--white);
+    font-family:var(--serif);
+    font-size:1.05rem;
+    display:block;
+    margin-bottom:6px;
+  }
+  .footer-logo{
+    width:180px;
+    height:auto;
+    flex-shrink:0;
+  }
+  .footer-bottom{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:12px;
+    color:rgba(255,255,255,0.6);
+  }
+
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="wordmark" href="#top">HK Community Hub <span>@ UoS</span></a>
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Open menu">&#9776;</label>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#what-we-do">What we do</a>
+      <a href="#partners">Partners</a>
+      <a href="#get-involved">Get involved</a>
+      <a href="#events">Events</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-solid header-cta" href="#get-involved">Get involved</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <p class="eyebrow">University of Sheffield &middot; Civic Knowledge Exchange</p>
+    <h1>HK Community Hub @ UoS</h1>
+    <p class="hero-sub">A shared platform connecting the University of Sheffield with Hong Kong communities through culture, storytelling and creative participation.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#get-involved">Join an event</a>
+      <a class="btn btn-ghost" href="#about">Learn about the Hub</a>
+    </div>
+  </div>
+
+  <div class="hero-skyline-wrap">
+    <svg class="hero-skyline" viewBox="0 0 1200 260" preserveAspectRatio="none" aria-hidden="true">
+      <!-- hills (Sheffield, city of seven hills) -->
+      <path d="M0,180 C90,150 150,200 230,170 C310,140 360,190 430,165 L430,260 L0,260 Z" fill="rgba(255,255,255,0.06)"/>
+      <!-- Sheffield terraces + tower, left side -->
+      <g fill="rgba(255,255,255,0.16)">
+        <rect x="40" y="150" width="26" height="60"/>
+        <polygon points="40,150 53,135 66,150"/>
+        <rect x="72" y="160" width="26" height="50"/>
+        <polygon points="72,160 85,146 98,160"/>
+        <rect x="104" y="155" width="26" height="55"/>
+        <polygon points="104,155 117,141 130,155"/>
+        <rect x="170" y="120" width="20" height="90"/>
+        <rect x="200" y="100" width="16" height="110"/>
+        <rect x="226" y="140" width="22" height="70"/>
+      </g>
+      <!-- connecting horizon line -->
+      <line x1="0" y1="210" x2="1200" y2="210" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+
+      <!-- central emblem: two five-petal blooms interlocking -->
+      <g transform="translate(560,196)" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.4">
+        <g transform="translate(-14,0)">
+          <g>
+            <ellipse cx="0" cy="-14" rx="6" ry="14"/>
+            <ellipse cx="0" cy="-14" rx="6" ry="14" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-14" rx="6" ry="14" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-14" rx="6" ry="14" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-14" rx="6" ry="14" transform="rotate(288)"/>
+          </g>
+        </g>
+        <g transform="translate(14,0)">
+          <g>
+            <ellipse cx="0" cy="-12" rx="5" ry="12"/>
+            <ellipse cx="0" cy="-12" rx="5" ry="12" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-12" rx="5" ry="12" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-12" rx="5" ry="12" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-12" rx="5" ry="12" transform="rotate(288)"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- Hong Kong harbour + towers, right side -->
+      <path d="M770,230 C860,220 940,235 1020,222 C1090,212 1140,224 1200,216 L1200,260 L770,260 Z" fill="rgba(255,255,255,0.06)"/>
+      <g fill="rgba(255,255,255,0.16)">
+        <rect x="800" y="130" width="14" height="90"/>
+        <rect x="818" y="100" width="14" height="120"/>
+        <rect x="836" y="150" width="14" height="70"/>
+        <rect x="858" y="80" width="16" height="140"/>
+        <rect x="880" y="120" width="14" height="100"/>
+        <rect x="902" y="95" width="14" height="125"/>
+        <rect x="924" y="140" width="14" height="80"/>
+        <rect x="946" y="110" width="14" height="110"/>
+        <rect x="968" y="150" width="14" height="70"/>
+        <rect x="990" y="90" width="16" height="130"/>
+        <rect x="1012" y="135" width="14" height="85"/>
+        <rect x="1034" y="105" width="14" height="115"/>
+        <rect x="1056" y="145" width="14" height="75"/>
+        <rect x="1078" y="115" width="14" height="105"/>
+      </g>
+      <!-- junk boat -->
+      <g transform="translate(700,222)" fill="rgba(255,255,255,0.22)">
+        <path d="M0,8 L46,8 L40,16 L6,16 Z"/>
+        <path d="M14,8 L14,-22 L34,8 Z"/>
+      </g>
+    </svg>
+    <div class="hero-fade"></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <p class="eyebrow">About the Hub</p>
+      <h2>One platform, two cities, a shared sense of belonging</h2>
+      <p>HK Community Hub @ UoS is a civic knowledge exchange platform run from the University of Sheffield, built to strengthen social integration, cultural participation and civic belonging among Hong Kong communities in Sheffield and the wider region, however long you've called the city home.</p>
+      <p>The Hub links the University with diasporic organisations, youth groups, cultural institutions and creative practitioners, drawing on established partnerships across the city. Rather than running isolated events, it builds a coordinated infrastructure: shared programming, an advisory group, and structured evaluation that turns each activity into evidence for what genuinely helps communities settle, connect and contribute.</p>
+      <p>Funded through the University's Higher Education Innovation Funding (HEIF) for an initial twelve-month pilot, the Hub builds directly on the existing Project Sifu and a track record of Hong Kong community cultural programming in Sheffield.</p>
+    </div>
+    <div class="about-card">
+      <h3>At a glance</h3>
+      <ul class="about-list">
+        <li><b>Runs</b><span>August 2026 &ndash; July 2027 (Year 1 pilot)</span></li>
+        <li><b>Led by</b><span>School of Languages, Arts and Societies, University of Sheffield</span></li>
+        <li><b>Funded by</b><span>Higher Education Innovation Funding (HEIF)</span></li>
+        <li><b>Built on</b><span>Project Sifu and existing Hong Kong community programming in Sheffield</span></li>
+        <li><b>Feeds into</b><span>A REF impact case study on diasporic British&ndash;Hong Kong communities</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="what-we-do">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What we do</p>
+      <h2>From governance to evidence, in three connected strands</h2>
+      <p style="color:var(--ink-soft)">Each strand feeds the next: partnership groundwork shapes the programme, and the programme generates the evidence that helps the Hub grow.</p>
+    </div>
+    <div class="strand-row">
+      <div class="strand">
+        <div class="strand-mark">1</div>
+        <h3>Community Hub Development</h3>
+        <p>A quarterly advisory group brings together Re-Water CIC, C&amp;G Artpartment, Sheffield Museums, Bloc Projects, Sheffield Christian Chinese Church and Hong Kong community organisations to guide delivery and keep programming grounded in real community need.</p>
+      </div>
+      <div class="strand">
+        <div class="strand-mark">2</div>
+        <h3>Civic Cultural Programme</h3>
+        <p>Participatory filmmaking workshops, youth storytelling, community screenings with discussion, and oral history work documenting community stories and lived experience, often embedded within Lunar New Year and Mid-Autumn Festival events.</p>
+      </div>
+      <div class="strand">
+        <div class="strand-mark">3</div>
+        <h3>Impact Evidence and Engagement</h3>
+        <p>Surveys, interviews and partner feedback build a clear picture of what works, reviewed together with partners and shared at a closing civic roundtable with community leaders and policymakers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="partners">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Our partners</p>
+      <h2>Built on existing trust, not cold introductions</h2>
+      <p style="color:var(--ink-soft)">The Hub consolidates partnerships that already exist across Sheffield's cultural and community sector.</p>
+    </div>
+    <div class="partner-grid">
+      <div class="partner-card">Re-Water CIC</div>
+      <div class="partner-card">C&amp;G Artpartment</div>
+      <div class="partner-card">Sheffield Christian Chinese Church</div>
+      <div class="partner-card">Weston Park Museum</div>
+      <div class="partner-card">Millennium Gallery</div>
+      <div class="partner-card">Bloc Projects</div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="get-involved">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Get involved</p>
+      <h2>Two ways into the Hub</h2>
+      <p style="color:var(--ink-soft)">Whether you are a community member or an organisation, there is a clear way to take part.</p>
+    </div>
+    <div class="involve-grid">
+      <div class="involve-card">
+        <h3>For community members</h3>
+        <p>Join a filmmaking workshop, a storytelling session, or one of our screenings and discussions. No experience needed, just an interest in sharing or hearing Hong Kong community stories.</p>
+        <a class="btn btn-solid" href="#events">See upcoming events</a>
+      </div>
+      <div class="involve-card">
+        <h3>For organisations and partners</h3>
+        <p>If your organisation works with Hong Kong or wider East and Southeast Asian communities in the North of England, we would welcome a conversation about joining the advisory group.</p>
+        <a class="btn btn-outline" href="#contact">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="form-slot">
+      Registration form goes here.
+      <!-- GOOGLE FORM EMBED: replace this block with the Google Form iframe embed code for event/workshop registration -->
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Upcoming events</p>
+      <h2>What's on</h2>
+    </div>
+    <div class="event-row">
+      <div class="event-card">
+        <div class="event-date">Date to be confirmed</div>
+        <div class="event-body">
+          <h3>Participatory filmmaking workshop</h3>
+          <p>A hands-on session for Hong Kong community youth, building on the Project Sifu approach to filmmaking.</p>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date">Date to be confirmed</div>
+        <div class="event-body">
+          <h3>Community screening and discussion</h3>
+          <p>A public screening of Hong Kong cinema, followed by an open conversation.</p>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date">Date to be confirmed</div>
+        <div class="event-body">
+          <h3>Oral history storytelling session</h3>
+          <p>A guided session for sharing and recording community stories and memories, in a small and supportive group.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <h2>Talk to the Hub team</h2>
+      <p style="color:var(--ink-soft)">For event queries, partnership conversations, or press enquiries, reach out directly and we'll get back to you.</p>
+    </div>
+    <div class="contact-block">
+      <p><strong>Project Lead</strong><br>Dr Wayne Wong<br>Lecturer, East Asian Studies<br>School of Languages, Arts and Societies</p>
+      <p><strong>Email</strong><br>[add contact email]</p>
+      <p><strong>Address</strong><br>University of Sheffield<br>Western Bank, Sheffield, S10 2TN</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-top">
+    <div>
+      <strong>HK Community Hub @ UoS</strong>
+      Supported by Higher Education Innovation Funding (HEIF), University of Sheffield.
+    </div>
+    <img class="footer-logo" src="/assets/uos-logo-white.png" alt="University of Sheffield logo" width="180" height="57" loading="lazy">
+  </div>
+  <div class="wrap footer-bottom">
+    <span>&copy; 2026 University of Sheffield. All rights reserved.</span>
+    <span>School of Languages, Arts and Societies</span>
+  </div>
+</footer>
+
+</body>
+</html>
