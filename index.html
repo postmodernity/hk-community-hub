@@ -360,8 +360,9 @@
   /* ---------- partners ---------- */
   .partner-grid{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:repeat(2, 1fr);
     gap:18px;
+    max-width:560px;
   }
   .partner-card{
     border:1.5px solid var(--rule);
@@ -377,9 +378,6 @@
     align-items:center;
     justify-content:center;
     min-height:96px;
-  }
-  @media (max-width:760px){
-    .partner-grid{grid-template-columns:repeat(2, 1fr);}
   }
   @media (max-width:480px){
     .partner-grid{grid-template-columns:1fr;}
@@ -404,9 +402,9 @@
   .involve-card p{color:var(--ink-soft);font-size:0.96rem;}
   .form-slot{
     margin-top:60px;
-    border:1.5px dashed var(--violet-powder);
+    border:1px solid var(--rule);
     border-radius:18px;
-    padding:46px 24px;
+    padding:36px 24px;
     text-align:center;
     color:var(--ink-soft);
     background:var(--white);
@@ -565,7 +563,7 @@
       <div class="strand">
         <div class="strand-mark">1</div>
         <h3>Community Hub Development</h3>
-        <p>A quarterly advisory group brings together Re-Water CIC, C&amp;G Artpartment, Sheffield Museums, Bloc Projects, Sheffield Christian Chinese Church and Hong Kong community organisations to guide delivery and keep programming grounded in real community need.</p>
+        <p>A quarterly advisory group brings together Re-Water CIC, C&amp;G Artpartment and Hong Kong community organisations to guide delivery and keep programming grounded in real community need.</p>
       </div>
       <div class="strand">
         <div class="strand-mark">2</div>
@@ -591,10 +589,6 @@
     <div class="partner-grid">
       <div class="partner-card">Re-Water CIC</div>
       <div class="partner-card">C&amp;G Artpartment</div>
-      <div class="partner-card">Sheffield Christian Chinese Church</div>
-      <div class="partner-card">Weston Park Museum</div>
-      <div class="partner-card">Millennium Gallery</div>
-      <div class="partner-card">Bloc Projects</div>
     </div>
   </div>
 </section>
@@ -620,7 +614,8 @@
     </div>
 
     <div class="form-slot">
-      Registration form goes here.
+      <p style="margin:0 0 6px;font-weight:600;color:var(--violet-dark);">Sign up for updates</p>
+      <p style="margin:0;color:var(--ink-soft);font-size:0.92rem;">Our registration form is being finalised. Email <a href="mailto:k.wong@sheffield.ac.uk">k.wong@sheffield.ac.uk</a> and we'll let you know the moment it's live.</p>
       <!-- GOOGLE FORM EMBED: replace this block with the Google Form iframe embed code for event/workshop registration -->
     </div>
   </div>
@@ -631,24 +626,25 @@
     <div class="section-head">
       <p class="eyebrow">Upcoming events</p>
       <h2>What's on</h2>
+      <p style="color:var(--ink-soft)">Full dates will be announced shortly. Register your interest below and we'll let you know the moment they're confirmed.</p>
     </div>
     <div class="event-row">
       <div class="event-card">
-        <div class="event-date">Date to be confirmed</div>
+        <div class="event-date">Coming soon</div>
         <div class="event-body">
           <h3>Participatory filmmaking workshop</h3>
           <p>A hands-on session for Hong Kong community youth, building on the Project Sifu approach to filmmaking.</p>
         </div>
       </div>
       <div class="event-card">
-        <div class="event-date">Date to be confirmed</div>
+        <div class="event-date">Coming soon</div>
         <div class="event-body">
           <h3>Community screening and discussion</h3>
           <p>A public screening of Hong Kong cinema, followed by an open conversation.</p>
         </div>
       </div>
       <div class="event-card">
-        <div class="event-date">Date to be confirmed</div>
+        <div class="event-date">Coming soon</div>
         <div class="event-body">
           <h3>Oral history storytelling session</h3>
           <p>A guided session for sharing and recording community stories and memories, in a small and supportive group.</p>
