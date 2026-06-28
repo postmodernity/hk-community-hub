@@ -231,9 +231,9 @@
   .hero{
     position:relative;
     overflow:hidden;
-    background:linear-gradient(165deg, var(--violet) 0%, var(--violet-dark) 100%);
+    background:linear-gradient(135deg, #440099 0%, #2E0066 100%);
     color:var(--white);
-    padding:88px 0 0;
+    padding:88px 0 96px;
   }
   .hero-inner{
     position:relative;
@@ -259,23 +259,6 @@
     flex-wrap:wrap;
     gap:14px;
     margin:28px 0 0;
-  }
-  .hero-skyline{
-    position:relative;
-    z-index:1;
-    width:100%;
-    height:auto;
-    margin-top:56px;
-    opacity:0.9;
-  }
-  .hero-skyline-wrap{
-    position:relative;
-  }
-  .hero-fade{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to top, var(--violet-dark) 0%, rgba(46,0,102,0) 55%);
-    pointer-events:none;
   }
 
   /* ---------- generic section rhythm ---------- */
@@ -547,74 +530,6 @@
       <a class="btn btn-primary" href="#get-involved">Join an event</a>
       <a class="btn btn-ghost" href="#about">Learn about the Hub</a>
     </div>
-  </div>
-
-  <div class="hero-skyline-wrap">
-    <svg class="hero-skyline" viewBox="0 0 1200 260" preserveAspectRatio="none" aria-hidden="true">
-      <!-- hills (Sheffield, city of seven hills) -->
-      <path d="M0,180 C90,150 150,200 230,170 C310,140 360,190 430,165 L430,260 L0,260 Z" fill="rgba(255,255,255,0.06)"/>
-      <!-- Sheffield terraces + tower, left side -->
-      <g fill="rgba(255,255,255,0.16)">
-        <rect x="40" y="150" width="26" height="60"/>
-        <polygon points="40,150 53,135 66,150"/>
-        <rect x="72" y="160" width="26" height="50"/>
-        <polygon points="72,160 85,146 98,160"/>
-        <rect x="104" y="155" width="26" height="55"/>
-        <polygon points="104,155 117,141 130,155"/>
-        <rect x="170" y="120" width="20" height="90"/>
-        <rect x="200" y="100" width="16" height="110"/>
-        <rect x="226" y="140" width="22" height="70"/>
-      </g>
-      <!-- connecting horizon line -->
-      <line x1="0" y1="210" x2="1200" y2="210" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
-
-      <!-- central emblem: two five-petal blooms interlocking -->
-      <g transform="translate(560,196)" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.4">
-        <g transform="translate(-14,0)">
-          <g>
-            <ellipse cx="0" cy="-14" rx="6" ry="14"/>
-            <ellipse cx="0" cy="-14" rx="6" ry="14" transform="rotate(72)"/>
-            <ellipse cx="0" cy="-14" rx="6" ry="14" transform="rotate(144)"/>
-            <ellipse cx="0" cy="-14" rx="6" ry="14" transform="rotate(216)"/>
-            <ellipse cx="0" cy="-14" rx="6" ry="14" transform="rotate(288)"/>
-          </g>
-        </g>
-        <g transform="translate(14,0)">
-          <g>
-            <ellipse cx="0" cy="-12" rx="5" ry="12"/>
-            <ellipse cx="0" cy="-12" rx="5" ry="12" transform="rotate(72)"/>
-            <ellipse cx="0" cy="-12" rx="5" ry="12" transform="rotate(144)"/>
-            <ellipse cx="0" cy="-12" rx="5" ry="12" transform="rotate(216)"/>
-            <ellipse cx="0" cy="-12" rx="5" ry="12" transform="rotate(288)"/>
-          </g>
-        </g>
-      </g>
-
-      <!-- Hong Kong harbour + towers, right side -->
-      <path d="M770,230 C860,220 940,235 1020,222 C1090,212 1140,224 1200,216 L1200,260 L770,260 Z" fill="rgba(255,255,255,0.06)"/>
-      <g fill="rgba(255,255,255,0.16)">
-        <rect x="800" y="130" width="14" height="90"/>
-        <rect x="818" y="100" width="14" height="120"/>
-        <rect x="836" y="150" width="14" height="70"/>
-        <rect x="858" y="80" width="16" height="140"/>
-        <rect x="880" y="120" width="14" height="100"/>
-        <rect x="902" y="95" width="14" height="125"/>
-        <rect x="924" y="140" width="14" height="80"/>
-        <rect x="946" y="110" width="14" height="110"/>
-        <rect x="968" y="150" width="14" height="70"/>
-        <rect x="990" y="90" width="16" height="130"/>
-        <rect x="1012" y="135" width="14" height="85"/>
-        <rect x="1034" y="105" width="14" height="115"/>
-        <rect x="1056" y="145" width="14" height="75"/>
-        <rect x="1078" y="115" width="14" height="105"/>
-      </g>
-      <!-- junk boat -->
-      <g transform="translate(700,222)" fill="rgba(255,255,255,0.22)">
-        <path d="M0,8 L46,8 L40,16 L6,16 Z"/>
-        <path d="M14,8 L14,-22 L34,8 Z"/>
-      </g>
-    </svg>
-    <div class="hero-fade"></div>
   </div>
 </section>
 
