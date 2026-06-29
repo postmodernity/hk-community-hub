@@ -361,44 +361,91 @@
     .strand-row::before{display:none;}
   }
 
-  /* ---------- gallery ---------- */
-  .gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:18px;
+  /* ---------- gallery (fluid interactive) ---------- */
+  .gallery-strips{
+    position:relative;
+    width:100%;
   }
-  .gallery-tile{
-    margin:0;
-  }
-  .gallery-placeholder{
-    aspect-ratio:4/3;
-    border:1.5px dashed var(--violet-powder);
+  .gallery-item{
+    position:absolute;
+    overflow:hidden;
+    cursor:pointer;
     border-radius:14px;
-    background:var(--violet-pale);
-    color:var(--violet);
-    display:flex;
+    box-shadow:var(--shadow);
+  }
+  .gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform 0.4s ease, opacity 0.4s ease;
+  }
+  .gallery-item:hover img{
+    transform:scale(1.04);
+    opacity:0.94;
+  }
+  @media (max-width:600px){
+    .gallery-strips{position:static !important; height:auto !important;}
+    .gallery-item{
+      position:static !important;
+      transform:none !important;
+      width:100% !important;
+      height:auto !important;
+      margin-bottom:12px;
+      display:block;
+    }
+    .gallery-item img{height:260px;}
+  }
+
+  /* ---------- lightbox ---------- */
+  .lightbox{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(46,0,102,0.92);
+    z-index:1000;
     align-items:center;
     justify-content:center;
   }
-  .gallery-placeholder svg{width:38px;height:38px;}
-  .gallery-photo{
-    aspect-ratio:4/3;
-    width:100%;
-    border-radius:14px;
-    object-fit:cover;
-    box-shadow:var(--shadow);
+  .lightbox.active{display:flex;}
+  .lightbox img{
+    max-width:88vw;
+    max-height:84vh;
+    object-fit:contain;
+    border-radius:8px;
+    display:block;
   }
-  .gallery-tile figcaption{
-    margin-top:10px;
-    font-size:0.86rem;
-    color:var(--ink-soft);
-    text-align:center;
+  .lightbox-close{
+    position:fixed;
+    top:1.5rem;
+    right:2rem;
+    font-size:2rem;
+    color:var(--white);
+    background:none;
+    border:none;
+    cursor:pointer;
+    line-height:1;
   }
-  @media (max-width:880px){
-    .gallery-grid{grid-template-columns:repeat(2, 1fr);}
+  .lightbox-close:hover{opacity:0.7;}
+  .lightbox-prev,
+  .lightbox-next{
+    position:fixed;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:2.2rem;
+    color:var(--white);
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:1rem;
   }
-  @media (max-width:480px){
-    .gallery-grid{grid-template-columns:1fr;}
+  .lightbox-prev:hover,
+  .lightbox-next:hover{opacity:0.7;}
+  .lightbox-prev{left:0.5rem;}
+  .lightbox-next{right:0.5rem;}
+  @media (max-width:600px){
+    .lightbox-prev,.lightbox-next{font-size:1.6rem; padding:0.6rem;}
+    .lightbox-close{top:1rem; right:1rem; font-size:1.6rem;}
   }
 
   /* ---------- get involved ---------- */
@@ -598,32 +645,55 @@
 </section>
 
 <section id="gallery">
-  <!-- GALLERY CONVENTION: photos live in /assets/gallery/, lowercase filename, no spaces, .jpg extension, roughly 4:3 in shape.
-       To add a new photo, copy a <figure> block below, point the src at the new file, and write a caption. -->
+  <!-- GALLERY CONVENTION: photos live in /assets/gallery/, lowercase filename, no spaces, .jpg extension.
+       Set data-aspect to the real photo's width divided by height (4:3 = 1.333, 1:1 = 1, 3:2 = 1.5, portrait 2:3 = 0.667).
+       To add a new photo, copy a .gallery-item block and point src at the new file. -->
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">From Project Sifu</p>
+      <p class="eyebrow">From the Hub</p>
       <h2>What the Hub builds on</h2>
-      <p style="color:var(--ink-soft)">A look at the workshops, screenings and community moments the Hub grows from.</p>
+      <p style="color:var(--ink-soft)">A look at the workshops, screenings and community moments the Hub grows from. Click any photo to view it full size.</p>
     </div>
-    <div class="gallery-grid">
-      <figure class="gallery-tile">
-        <img class="gallery-photo" src="assets/gallery/filmmaking.jpg" alt="Project Sifu filmmaking workshop" loading="lazy">
-        <figcaption>Project Sifu filmmaking workshop</figcaption>
-      </figure>
-      <figure class="gallery-tile">
-        <img class="gallery-photo" src="assets/gallery/stunt.jpg" alt="Stunt workshop with Fighting Spirit Film Festival" loading="lazy">
-        <figcaption>Stunt workshop with Fighting Spirit Film Festival</figcaption>
-      </figure>
-      <figure class="gallery-tile">
-        <img class="gallery-photo" src="assets/gallery/screening.jpg" alt="Community screening and discussion" loading="lazy">
-        <figcaption>Community screening and discussion</figcaption>
-      </figure>
-      <figure class="gallery-tile">
-        <img class="gallery-photo" src="assets/gallery/lunar.jpg" alt="Lunar New Year celebration" loading="lazy">
-        <figcaption>Lunar New Year celebration</figcaption>
-      </figure>
+    <div class="gallery-strips" id="galleryStrips">
+      <div class="gallery-item" data-aspect="1.333">
+        <img src="assets/gallery/filmmaking.jpg" alt="Project Sifu filmmaking workshop" loading="lazy">
+      </div>
+      <div class="gallery-item" data-aspect="1.333">
+        <img src="assets/gallery/stunt.jpg" alt="Stunt workshop with Fighting Spirit Film Festival" loading="lazy">
+      </div>
+      <div class="gallery-item" data-aspect="1.333">
+        <img src="assets/gallery/screening.jpg" alt="Community screening and discussion" loading="lazy">
+      </div>
+      <div class="gallery-item" data-aspect="1.333">
+        <img src="assets/gallery/lunar.jpg" alt="Lunar New Year celebration" loading="lazy">
+      </div>
+      <div class="gallery-item" data-aspect="1.333">
+        <img src="assets/gallery/photo5.jpg" alt="Project Sifu community moment" loading="lazy">
+      </div>
+      <div class="gallery-item" data-aspect="1.333">
+        <img src="assets/gallery/photo6.jpg" alt="Project Sifu community moment" loading="lazy">
+      </div>
+      <div class="gallery-item" data-aspect="1.333">
+        <img src="assets/gallery/photo7.jpg" alt="Project Sifu community moment" loading="lazy">
+      </div>
+      <div class="gallery-item" data-aspect="1.333">
+        <img src="assets/gallery/photo8.jpg" alt="Project Sifu community moment" loading="lazy">
+      </div>
+      <div class="gallery-item" data-aspect="1.333">
+        <img src="assets/gallery/photo9.jpg" alt="Project Sifu community moment" loading="lazy">
+      </div>
+      <div class="gallery-item" data-aspect="1.333">
+        <img src="assets/gallery/photo10.jpg" alt="Project Sifu community moment" loading="lazy">
+      </div>
     </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lbClose" aria-label="Close">&times;</button>
+    <button class="lightbox-prev" id="lbPrev" aria-label="Previous photo">&#8249;</button>
+    <img id="lbImg" src="" alt="">
+    <button class="lightbox-next" id="lbNext" aria-label="Next photo">&#8250;</button>
   </div>
 </section>
 
@@ -717,6 +787,115 @@
     <span>School of Languages, Arts and Societies</span>
   </div>
 </footer>
+
+<script>
+  /* ---------- Fluid gallery layout: proportional rows by aspect ratio ---------- */
+  const GALLERY_GAP = 10;
+
+  function layoutGallery(){
+    const container = document.getElementById('galleryStrips');
+    if (!container) return;
+    const items = Array.from(container.querySelectorAll('.gallery-item'));
+    const totalWidth = container.offsetWidth;
+
+    let y = 0;
+    let i = 0;
+
+    while (i < items.length){
+      const rowItems = items.slice(i, i + 3);
+      const aspects = rowItems.map(el => parseFloat(el.dataset.aspect) || 1.333);
+
+      const numGaps = rowItems.length - 1;
+      const availableWidth = totalWidth - numGaps * GALLERY_GAP;
+      const aspectSum = aspects.reduce((a, b) => a + b, 0);
+      const rowHeight = availableWidth / aspectSum;
+
+      let x = 0;
+      rowItems.forEach((item, j) => {
+        const itemWidth = aspects[j] * rowHeight;
+        item.style.transform = `translate(${x}px, ${y}px)`;
+        item.style.width = itemWidth + 'px';
+        item.style.height = rowHeight + 'px';
+        x += itemWidth + GALLERY_GAP;
+      });
+
+      y += rowHeight + GALLERY_GAP;
+      i += rowItems.length;
+    }
+
+    container.style.height = Math.max(y - GALLERY_GAP, 0) + 'px';
+  }
+
+  layoutGallery();
+  window.addEventListener('resize', layoutGallery);
+
+  /* ---------- Lightbox with click-through and swipe navigation ---------- */
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbClose = document.getElementById('lbClose');
+  const lbPrev = document.getElementById('lbPrev');
+  const lbNext = document.getElementById('lbNext');
+  const galleryItems = Array.from(document.querySelectorAll('#galleryStrips .gallery-item'));
+  let currentIndex = 0;
+
+  function openLightbox(index){
+    currentIndex = index;
+    const img = galleryItems[index].querySelector('img');
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove('active');
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  function showPrev(){
+    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+    openLightbox(currentIndex);
+  }
+
+  function showNext(){
+    currentIndex = (currentIndex + 1) % galleryItems.length;
+    openLightbox(currentIndex);
+  }
+
+  galleryItems.forEach((item, index) => {
+    item.addEventListener('click', () => openLightbox(index));
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', showPrev);
+  lbNext.addEventListener('click', showNext);
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showPrev();
+    if (e.key === 'ArrowRight') showNext();
+  });
+
+  /* Swipe support for touch devices */
+  let touchStartX = 0;
+  lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  lightbox.addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].screenX;
+    const delta = touchEndX - touchStartX;
+    if (Math.abs(delta) > 40){
+      if (delta < 0) showNext();
+      else showPrev();
+    }
+  }, { passive: true });
+</script>
 
 </body>
 </html>
