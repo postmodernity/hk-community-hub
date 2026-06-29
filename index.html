@@ -381,6 +381,13 @@
     justify-content:center;
   }
   .gallery-placeholder svg{width:38px;height:38px;}
+  .gallery-photo{
+    aspect-ratio:4/3;
+    width:100%;
+    border-radius:14px;
+    object-fit:cover;
+    box-shadow:var(--shadow);
+  }
   .gallery-tile figcaption{
     margin-top:10px;
     font-size:0.86rem;
@@ -591,35 +598,29 @@
 </section>
 
 <section id="gallery">
+  <!-- GALLERY CONVENTION: photos live in /assets/gallery/, lowercase filename, no spaces, .jpg extension, roughly 4:3 in shape.
+       To add a new photo, copy a <figure> block below, point the src at the new file, and write a caption. -->
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">From Project Sifu</p>
       <h2>What the Hub builds on</h2>
-      <p style="color:var(--ink-soft)">A look at the workshops, screenings and community moments the Hub grows from. Photos coming soon.</p>
+      <p style="color:var(--ink-soft)">A look at the workshops, screenings and community moments the Hub grows from.</p>
     </div>
     <div class="gallery-grid">
       <figure class="gallery-tile">
-        <div class="gallery-placeholder" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="11" width="38" height="28" rx="3"/><circle cx="24" cy="25" r="7"/><path d="M17 11l2.5-4h9l2.5 4"/></svg>
-        </div>
+        <img class="gallery-photo" src="assets/gallery/filmmaking.jpg" alt="Project Sifu filmmaking workshop" loading="lazy">
         <figcaption>Project Sifu filmmaking workshop</figcaption>
       </figure>
       <figure class="gallery-tile">
-        <div class="gallery-placeholder" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="11" width="38" height="28" rx="3"/><circle cx="24" cy="25" r="7"/><path d="M17 11l2.5-4h9l2.5 4"/></svg>
-        </div>
+        <img class="gallery-photo" src="assets/gallery/stunt.jpg" alt="Stunt workshop with Fighting Spirit Film Festival" loading="lazy">
         <figcaption>Stunt workshop with Fighting Spirit Film Festival</figcaption>
       </figure>
       <figure class="gallery-tile">
-        <div class="gallery-placeholder" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="11" width="38" height="28" rx="3"/><circle cx="24" cy="25" r="7"/><path d="M17 11l2.5-4h9l2.5 4"/></svg>
-        </div>
+        <img class="gallery-photo" src="assets/gallery/screening.jpg" alt="Community screening and discussion" loading="lazy">
         <figcaption>Community screening and discussion</figcaption>
       </figure>
       <figure class="gallery-tile">
-        <div class="gallery-placeholder" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="11" width="38" height="28" rx="3"/><circle cx="24" cy="25" r="7"/><path d="M17 11l2.5-4h9l2.5 4"/></svg>
-        </div>
+        <img class="gallery-photo" src="assets/gallery/lunar.jpg" alt="Lunar New Year celebration" loading="lazy">
         <figcaption>Lunar New Year celebration</figcaption>
       </figure>
     </div>
