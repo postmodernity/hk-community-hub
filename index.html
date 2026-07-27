@@ -163,12 +163,19 @@
     text-decoration:none;
     color:var(--violet-dark);
     white-space:nowrap;
+    display:flex;
+    align-items:center;
   }
   .wordmark span{
     font-family:var(--sans);
     font-weight:500;
     color:var(--violet);
     font-size:0.85em;
+  }
+  .wordmark-logo{
+    height:44px;
+    width:auto;
+    display:block;
   }
   .site-nav{
     display:flex;
@@ -225,6 +232,9 @@
       max-height:340px;
       padding:8px 24px 20px;
     }
+  }
+  @media (max-width:600px){
+    .wordmark-logo{height:36px;}
   }
 
   /* ---------- hero ---------- */
@@ -570,7 +580,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="wordmark" href="#top">HK Community Hub <span>@ UoS</span></a>
+    <a class="wordmark" href="#top"><img class="wordmark-logo" src="/assets/hub-logo.png" alt="HK Community Hub at University of Sheffield"></a>
     <label for="nav-toggle" class="nav-toggle-label" aria-label="Open menu">&#9776;</label>
     <nav class="site-nav" aria-label="Primary">
       <a href="#about">About</a>
