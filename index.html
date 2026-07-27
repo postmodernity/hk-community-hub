@@ -567,11 +567,31 @@
     height:auto;
     flex-shrink:0;
   }
-  .footer-hub-logo{
+  .footer-hub-mark{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:12px;
+  }
+  .footer-hub-icon{
     height:48px;
     width:auto;
     display:block;
-    margin-bottom:10px;
+    flex-shrink:0;
+  }
+  .footer-hub-name{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.3rem;
+    color:var(--white);
+    margin:0;
+    white-space:nowrap;
+  }
+  .footer-hub-name span{
+    font-family:var(--sans);
+    font-weight:500;
+    font-size:0.78em;
+    color:rgba(255,255,255,0.75);
   }
   .footer-bottom{
     display:flex;
@@ -802,7 +822,10 @@
 <footer class="site-footer">
   <div class="wrap footer-top">
     <div>
-      <img class="footer-hub-logo" src="/assets/hub-logo-white.png" alt="HK Community Hub at University of Sheffield">
+      <div class="footer-hub-mark">
+        <img class="footer-hub-icon" src="/assets/hub-icon-white.png" alt="HK Community Hub logo">
+        <p class="footer-hub-name">HK Community Hub <span>@ UoS</span></p>
+      </div>
       Supported by Higher Education Innovation Fund (HEIF), University of Sheffield.
     </div>
     <img class="footer-logo" src="/assets/uos-logo-white.png" alt="University of Sheffield logo" width="180" height="57">
