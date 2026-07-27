@@ -159,23 +159,25 @@
   .wordmark{
     font-family:var(--serif);
     font-weight:700;
-    font-size:1.18rem;
+    font-size:1.3rem;
     text-decoration:none;
     color:var(--violet-dark);
     white-space:nowrap;
     display:flex;
     align-items:center;
+    gap:12px;
   }
   .wordmark span{
     font-family:var(--sans);
     font-weight:500;
     color:var(--violet);
-    font-size:0.85em;
+    font-size:0.78em;
   }
-  .wordmark-logo{
-    height:44px;
+  .wordmark-icon{
+    height:40px;
     width:auto;
     display:block;
+    flex-shrink:0;
   }
   .site-nav{
     display:flex;
@@ -234,7 +236,8 @@
     }
   }
   @media (max-width:600px){
-    .wordmark-logo{height:36px;}
+    .wordmark{font-size:1.05rem;gap:8px;}
+    .wordmark-icon{height:32px;}
   }
 
   /* ---------- hero ---------- */
@@ -564,6 +567,12 @@
     height:auto;
     flex-shrink:0;
   }
+  .footer-hub-logo{
+    height:48px;
+    width:auto;
+    display:block;
+    margin-bottom:10px;
+  }
   .footer-bottom{
     display:flex;
     flex-wrap:wrap;
@@ -580,7 +589,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="wordmark" href="#top"><img class="wordmark-logo" src="/assets/hub-logo.png" alt="HK Community Hub at University of Sheffield"></a>
+    <a class="wordmark" href="#top"><img class="wordmark-icon" src="/assets/hub-icon.png" alt="HK Community Hub logo">HK Community Hub <span>@ UoS</span></a>
     <label for="nav-toggle" class="nav-toggle-label" aria-label="Open menu">&#9776;</label>
     <nav class="site-nav" aria-label="Primary">
       <a href="#about">About</a>
@@ -793,7 +802,7 @@
 <footer class="site-footer">
   <div class="wrap footer-top">
     <div>
-      <strong>HK Community Hub @ UoS</strong>
+      <img class="footer-hub-logo" src="/assets/hub-logo-white.png" alt="HK Community Hub at University of Sheffield">
       Supported by Higher Education Innovation Fund (HEIF), University of Sheffield.
     </div>
     <img class="footer-logo" src="/assets/uos-logo-white.png" alt="University of Sheffield logo" width="180" height="57">
