@@ -159,25 +159,16 @@
   .wordmark{
     font-family:var(--serif);
     font-weight:700;
-    font-size:1.3rem;
+    font-size:1.18rem;
     text-decoration:none;
     color:var(--violet-dark);
     white-space:nowrap;
-    display:flex;
-    align-items:center;
-    gap:12px;
   }
   .wordmark span{
     font-family:var(--sans);
     font-weight:500;
     color:var(--violet);
-    font-size:0.78em;
-  }
-  .wordmark-icon{
-    height:40px;
-    width:auto;
-    display:block;
-    flex-shrink:0;
+    font-size:0.85em;
   }
   .site-nav{
     display:flex;
@@ -234,10 +225,6 @@
       max-height:340px;
       padding:8px 24px 20px;
     }
-  }
-  @media (max-width:600px){
-    .wordmark{font-size:1.05rem;gap:8px;}
-    .wordmark-icon{height:32px;}
   }
 
   /* ---------- hero ---------- */
@@ -494,7 +481,7 @@
   /* ---------- events ---------- */
   .event-row{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:repeat(2, 1fr);
     gap:24px;
   }
   .event-card{
@@ -502,6 +489,11 @@
     border:1px solid var(--rule);
     border-radius:16px;
     overflow:hidden;
+  }
+  .event-poster{
+    width:100%;
+    height:200px;
+    object-fit:cover;
   }
   .event-date{
     background:var(--violet);
@@ -515,6 +507,11 @@
   .event-body{padding:20px;}
   .event-body h3{font-size:1.02rem;}
   .event-body p{font-size:0.92rem;color:var(--ink-soft);margin-bottom:0;}
+  .event-body a{
+    color:var(--violet);
+    font-weight:600;
+    text-decoration:underline;
+  }
   @media (max-width:880px){
     .event-row{grid-template-columns:1fr;}
   }
@@ -567,32 +564,6 @@
     height:auto;
     flex-shrink:0;
   }
-  .footer-hub-mark{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    margin-bottom:12px;
-  }
-  .footer-hub-icon{
-    height:48px;
-    width:auto;
-    display:block;
-    flex-shrink:0;
-  }
-  .footer-hub-name{
-    font-family:var(--serif);
-    font-weight:700;
-    font-size:1.3rem;
-    color:var(--white);
-    margin:0;
-    white-space:nowrap;
-  }
-  .footer-hub-name span{
-    font-family:var(--sans);
-    font-weight:500;
-    font-size:0.78em;
-    color:rgba(255,255,255,0.75);
-  }
   .footer-bottom{
     display:flex;
     flex-wrap:wrap;
@@ -609,7 +580,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="wordmark" href="#top"><img class="wordmark-icon" src="/assets/hub-icon.png" alt="HK Community Hub logo">HK Community Hub <span>@ UoS</span></a>
+    <a class="wordmark" href="#top">HK Community Hub <span>@ UoS</span></a>
     <label for="nav-toggle" class="nav-toggle-label" aria-label="Open menu">&#9776;</label>
     <nav class="site-nav" aria-label="Primary">
       <a href="#about">About</a>
@@ -642,15 +613,15 @@
       <h2>One platform, two cities, a shared sense of belonging</h2>
       <p>HK Community Hub @ UoS is a civic knowledge exchange platform run from the University of Sheffield, built to strengthen social integration, cultural participation and civic belonging among Hong Kong communities in Sheffield and the wider region, however long you've called the city home.</p>
       <p>The Hub links the University with Hong Kong community organisations, youth groups, cultural institutions and creative practitioners, drawing on established partnerships across the city. Rather than running isolated events, it builds a coordinated infrastructure: shared programming, an advisory group, and structured evaluation that turns each activity into evidence for what genuinely helps communities settle, connect and contribute.</p>
-      <p>Funded through the University's Higher Education Innovation Fund (HEIF), the Hub builds directly on a track record of Hong Kong community cultural programming in Sheffield.</p>
+      <p>Funded through the University's Higher Education Innovation Fund (HEIF) for an initial twelve-month pilot, the Hub builds directly on the existing Project Sifu and a track record of Hong Kong community cultural programming in Sheffield.</p>
     </div>
     <div class="about-card">
       <h3>At a glance</h3>
       <ul class="about-list">
         <li><b>Led by</b><span>School of Languages, Arts and Societies, University of Sheffield</span></li>
         <li><b>Funded by</b><span>Higher Education Innovation Fund (HEIF)</span></li>
-        <li><b>Built on</b><span>Existing Hong Kong community programming in Sheffield</span></li>
-        <li><b>Feeds into</b><span>A REF impact case study on Hong Kong communities in the UK</span></li>
+        <li><b>Built on</b><span>Project Sifu and existing Hong Kong community programming in Sheffield</span></li>
+        <li><b>Feeds into</b><span>A REF impact case study on Hong Kong communities in Sheffield</span></li>
       </ul>
     </div>
   </div>
@@ -763,7 +734,7 @@
     </div>
 
     <div class="form-slot">
-      <p style="margin-bottom:14px;"><strong>Registration is opening soon.</strong><br>We're putting the final touches on our next programme. Get in touch below and we'll let you know the moment sign-up goes live.</p>
+      <p style="margin-bottom:14px;"><strong>Registration is opening soon.</strong><br>We're putting the final touches on our first programme. Get in touch below and we'll let you know the moment sign-up goes live.</p>
       <a class="btn btn-outline" href="#contact">Get in touch</a>
       <!-- GOOGLE FORM EMBED: once registration is ready, replace this block with the Google Form iframe embed code for event/workshop registration -->
     </div>
@@ -775,9 +746,27 @@
     <div class="section-head">
       <p class="eyebrow">Upcoming events</p>
       <h2>What's on</h2>
-      <p style="color:var(--ink-soft)">Programme launching later this year. Here's a taster of what's planned, register your interest below and we'll confirm dates as soon as they're set.</p>
+      <p style="color:var(--ink-soft)">Our first confirmed events are below, with more from the programme to follow throughout the year.</p>
     </div>
+    <!-- EVENT POSTERS: optional, stored in /assets/events/, lowercase filename, hyphens allowed, .jpg extension.
+         Omit the <img class="event-poster"> line for events without a poster yet ("Coming soon" cards). -->
     <div class="event-row">
+      <div class="event-card">
+        <img class="event-poster" src="assets/events/history-talk.jpg" alt="Event poster for UK Culture of Remembrance: Hong Kong's Connection to British Military Heritage" loading="lazy">
+        <div class="event-date">22 August 2026</div>
+        <div class="event-body">
+          <h3>UK Culture of Remembrance</h3>
+          <p>A serving British Army officer with Hong Kong heritage discusses the military history of Hong Kong, wartime commemorations including Liberation Day, and the Act of Remembrance. 2&ndash;4pm, Lecture Theatre 02, The Diamond. Free, registration required. <a href="https://history_talk_remembrace_culture.eventbrite.com">Register</a></p>
+        </div>
+      </div>
+      <div class="event-card">
+        <img class="event-poster" src="assets/events/streets-on-screen.jpg" alt="Event poster for Streets on Screen: re-imagining Hong Kong and Sheffield through cinema" loading="lazy">
+        <div class="event-date">20 August &ndash; 18 September 2026</div>
+        <div class="event-body">
+          <h3>Streets on Screen</h3>
+          <p>Re-imagining Hong Kong and Sheffield through cinema: a showcase of photography and mixed media art by project collaborators Ming, Sony, Shan Cheng, Nam Huh, Ayesha Iqbal, John Lau, Claire Li, Johnathan Liu, Ernie Tay and AY Tung. Opening reception 20 August, 6pm. C&amp;G Artpartment, 71 Holme Lane. Wed&ndash;Sat, 1&ndash;5.30pm, or by appointment.</p>
+        </div>
+      </div>
       <div class="event-card">
         <div class="event-date">Coming soon</div>
         <div class="event-body">
@@ -792,13 +781,6 @@
           <p>A public screening of Hong Kong cinema, followed by an open conversation.</p>
         </div>
       </div>
-      <div class="event-card">
-        <div class="event-date">Coming soon</div>
-        <div class="event-body">
-          <h3>Oral history storytelling session</h3>
-          <p>A guided session for sharing and recording community stories and memories, in a small and supportive group.</p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -811,7 +793,7 @@
       <p style="color:var(--ink-soft)">For event queries, partnership conversations, or press enquiries, reach out directly and we'll get back to you.</p>
     </div>
     <div class="contact-block">
-      <p><strong>Hub Founder</strong><br>Dr Wayne Wong<br>Lecturer, East Asian Studies<br>School of Languages, Arts and Societies</p>
+      <p><strong>Project Lead</strong><br>Dr Wayne Wong<br>Lecturer, East Asian Studies<br>School of Languages, Arts and Societies</p>
       <p><strong>Impact Associate</strong><br>Clara Cheung<br>PhD Candidate, History of Art<br>University of York</p>
       <p><strong>Email</strong><br><a href="mailto:k.wong@sheffield.ac.uk">k.wong@sheffield.ac.uk</a></p>
       <p><strong>Address</strong><br>University of Sheffield<br>Western Bank, Sheffield, S10 2TN</p>
@@ -822,10 +804,7 @@
 <footer class="site-footer">
   <div class="wrap footer-top">
     <div>
-      <div class="footer-hub-mark">
-        <img class="footer-hub-icon" src="/assets/hub-icon-white.png" alt="HK Community Hub logo">
-        <p class="footer-hub-name">HK Community Hub <span>@ UoS</span></p>
-      </div>
+      <strong>HK Community Hub @ UoS</strong>
       Supported by Higher Education Innovation Fund (HEIF), University of Sheffield.
     </div>
     <img class="footer-logo" src="/assets/uos-logo-white.png" alt="University of Sheffield logo" width="180" height="57">
