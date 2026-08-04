@@ -842,7 +842,11 @@
      in this script cannot stop the banner photos from appearing. */
   (function initHeroCarousel(){
     try {
-  /* ---------- Hero banner photo carousel ---------- */
+  /* ---------- Hero banner photo carousel ----------
+     Rotation runs whenever the hero is on screen and the tab is visible.
+     It deliberately does NOT pause on hover or focus: the hero fills the
+     viewport, so the pointer sits inside it almost permanently, and pausing
+     on focus left the timer stopped for good after a jump-nav click. */
   const heroPhotos = [
     'assets/banner/banner1.jpg',
     'assets/banner/banner2.jpg',
@@ -851,53 +855,73 @@
     'assets/banner/banner5.jpg'
     // Add more banner photos here as they're ready, e.g. 'assets/banner/banner6.jpg'
   ];
+  const HERO_INTERVAL = 8000;
   const heroBg = document.getElementById('heroBg');
   const heroFlash = document.getElementById('heroFlash');
+  const heroSection = document.getElementById('top');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (heroBg && heroPhotos.length){
-    heroPhotos.forEach((src, i) => {
+    const slides = heroPhotos.map((src, i) => {
       const slide = document.createElement('div');
       slide.className = 'hero-bg-slide' + (i === 0 ? ' active' : '');
-      slide.style.backgroundImage = `url('${src}')`;
+      slide.style.backgroundImage = "url('" + src + "')";
       heroBg.appendChild(slide);
+      return slide;
     });
 
-    if (heroPhotos.length > 1 && !prefersReducedMotion){
+    // Preload every photo so a crossfade never lands on an image
+    // that hasn't downloaded yet.
+    heroPhotos.slice(1).forEach(src => { new Image().src = src; });
+
+    if (slides.length > 1 && !prefersReducedMotion){
       let heroIndex = 0;
       let heroTimer = null;
-      const heroSlides = () => Array.from(heroBg.querySelectorAll('.hero-bg-slide'));
 
       function advanceHero(){
-        const items = heroSlides();
-        const next = (heroIndex + 1) % items.length;
-        heroFlash.classList.add('flash-on');
+        const next = (heroIndex + 1) % slides.length;
+        if (heroFlash) heroFlash.classList.add('flash-on');
         setTimeout(() => {
-          items[heroIndex].classList.remove('active');
-          items[next].classList.add('active');
+          slides[heroIndex].classList.remove('active');
+          slides[next].classList.add('active');
           heroIndex = next;
-          heroFlash.classList.remove('flash-on');
+          if (heroFlash) heroFlash.classList.remove('flash-on');
         }, 300);
       }
 
       function startHero(){
         if (heroTimer) return;
-        heroTimer = setInterval(advanceHero, 8000);
+        heroTimer = setInterval(advanceHero, HERO_INTERVAL);
       }
       function stopHero(){
         clearInterval(heroTimer);
         heroTimer = null;
       }
+      // Restart the clock from zero, so a photo brought back into view
+      // always gets its full turn rather than flipping straight away.
+      function restartHero(){
+        stopHero();
+        startHero();
+      }
 
       startHero();
 
-      const heroSection = document.getElementById('top');
-      heroSection.addEventListener('mouseenter', stopHero);
-      heroSection.addEventListener('mouseleave', startHero);
-      heroSection.addEventListener('focusin', stopHero);
-      heroSection.addEventListener('focusout', startHero);
+      // Pause when the hero is scrolled out of view, resume with a fresh
+      // interval when it comes back.
+      if (heroSection && 'IntersectionObserver' in window){
+        const heroObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) restartHero();
+            else stopHero();
+          });
+        }, { threshold: 0.15 });
+        heroObserver.observe(heroSection);
+      }
+
+      // Pause in background tabs, where timers are throttled anyway.
       document.addEventListener('visibilitychange', () => {
-        if (document.hidden) stopHero(); else startHero();
+        if (document.hidden) stopHero();
+        else restartHero();
       });
     }
   }
