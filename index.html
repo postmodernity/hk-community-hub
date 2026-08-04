@@ -492,8 +492,8 @@
   }
   .event-poster{
     width:100%;
-    height:200px;
-    object-fit:cover;
+    height:auto;
+    cursor:pointer;
   }
   .event-date{
     background:var(--violet);
@@ -856,20 +856,30 @@
   layoutGallery();
   window.addEventListener('resize', layoutGallery);
 
-  /* ---------- Lightbox with click-through and swipe navigation ---------- */
+  /* ---------- Lightbox with click-through and swipe navigation ----------
+     Works with any image collection: pass the array of <img> elements to
+     open, plus the index to start on. Used by both the gallery and the
+     event posters below. */
   const lightbox = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
   const lbClose = document.getElementById('lbClose');
   const lbPrev = document.getElementById('lbPrev');
   const lbNext = document.getElementById('lbNext');
   const galleryItems = Array.from(document.querySelectorAll('#galleryStrips .gallery-item'));
+  const galleryImgs = galleryItems.map(item => item.querySelector('img'));
+  let activeImgs = galleryImgs;
   let currentIndex = 0;
 
-  function openLightbox(index){
-    currentIndex = index;
-    const img = galleryItems[index].querySelector('img');
+  function renderLightboxImage(){
+    const img = activeImgs[currentIndex];
     lbImg.src = img.src;
     lbImg.alt = img.alt;
+  }
+
+  function openLightbox(imgs, index){
+    activeImgs = imgs;
+    currentIndex = index;
+    renderLightboxImage();
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -881,17 +891,23 @@
   }
 
   function showPrev(){
-    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-    openLightbox(currentIndex);
+    currentIndex = (currentIndex - 1 + activeImgs.length) % activeImgs.length;
+    renderLightboxImage();
   }
 
   function showNext(){
-    currentIndex = (currentIndex + 1) % galleryItems.length;
-    openLightbox(currentIndex);
+    currentIndex = (currentIndex + 1) % activeImgs.length;
+    renderLightboxImage();
   }
 
   galleryItems.forEach((item, index) => {
-    item.addEventListener('click', () => openLightbox(index));
+    item.addEventListener('click', () => openLightbox(galleryImgs, index));
+  });
+
+  /* Event posters open the same lightbox, scoped to just the poster set */
+  const eventPosterImgs = Array.from(document.querySelectorAll('.event-poster'));
+  eventPosterImgs.forEach((img, index) => {
+    img.addEventListener('click', () => openLightbox(eventPosterImgs, index));
   });
 
   lbClose.addEventListener('click', closeLightbox);
