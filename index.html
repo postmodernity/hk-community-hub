@@ -346,18 +346,14 @@
     margin-bottom:0.7em;
   }
   .logo-note p:last-child{margin-bottom:0;}
-  .about-logo-mark{
-    display:block;
-    width:170px;
+  .logo-note-mark{
+    float:right;
+    width:140px;
     height:auto;
-    margin:150px auto 0;
-    cursor:pointer;
-    transition:transform 0.2s ease, opacity 0.2s ease;
+    margin:2px 0 20px 26px;
   }
-  .about-logo-mark:hover,
-  .about-logo-mark:focus-visible{
-    transform:scale(1.04);
-    opacity:0.92;
+  @media (max-width:600px){
+    .logo-note-mark{float:none; display:block; width:110px; margin:0 auto 20px;}
   }
 
   /* ---------- strands (what we do) ---------- */
@@ -653,23 +649,21 @@
       <p>Funded through the University's Higher Education Innovation Fund (HEIF) for an initial twelve-month pilot, the Hub builds directly on the existing Project Sifu and a track record of Hong Kong community cultural programming in Sheffield.</p>
 
       <div class="logo-note">
+        <img class="logo-note-mark" src="assets/hub-mark.png" alt="The HK Community Hub mark: radiating lines forming a haitang blossom around the letters HK">
         <h3>About the logo: a blossom that gathers, then opens outward</h3>
         <p>The Hub's mark is drawn from the haitang blossom, the Chinese flowering crabapple that recurs across Chinese decorative art. Among the meanings it carries is reunion, the gathering back together of people who have been apart, which felt like the right place to begin for a project about communities finding each other in a new city.</p>
         <p>The mark is built from radiating lines. They travel inward to meet at a single centre, and the points where they converge are marked as small nodes, before the same lines open outward again into the space around them. That double movement is the whole idea. A community is made by drawing together, and it stays alive by reaching past itself, and neither motion works without the other.</p>
         <p>At the centre sit the letters HK, held within the blossom rather than placed on top of it. Hong Kong is not an emblem the Hub displays but a starting point it grows from, one that keeps its shape while extending into the civic life of Sheffield.</p>
       </div>
     </div>
-    <div>
-      <div class="about-card">
-        <h3>At a glance</h3>
-        <ul class="about-list">
-          <li><b>Led by</b><span>School of Languages, Arts and Societies, University of Sheffield</span></li>
-          <li><b>Funded by</b><span>Higher Education Innovation Fund (HEIF)</span></li>
-          <li><b>Built on</b><span>Project Sifu and existing Hong Kong community programming in Sheffield</span></li>
-          <li><b>Feeds into</b><span>A REF impact case study on Hong Kong communities in Sheffield</span></li>
-        </ul>
-      </div>
-      <img class="about-logo-mark" src="assets/hub-mark.png" alt="The HK Community Hub mark: radiating lines forming a haitang blossom around the letters HK. Click to view larger." role="button" tabindex="0">
+    <div class="about-card">
+      <h3>At a glance</h3>
+      <ul class="about-list">
+        <li><b>Led by</b><span>School of Languages, Arts and Societies, University of Sheffield</span></li>
+        <li><b>Funded by</b><span>Higher Education Innovation Fund (HEIF)</span></li>
+        <li><b>Built on</b><span>Project Sifu and existing Hong Kong community programming in Sheffield</span></li>
+        <li><b>Feeds into</b><span>A REF impact case study on Hong Kong communities in Sheffield</span></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -1042,19 +1036,6 @@
   eventPosterImgs.forEach((img, index) => {
     img.addEventListener('click', () => openLightbox(eventPosterImgs, index));
   });
-
-  /* The logo mark under "At a glance" opens the same lightbox on its own,
-     as a single-image set, with keyboard support since it's a clickable img. */
-  const logoMarkImg = document.querySelector('.about-logo-mark');
-  if (logoMarkImg){
-    logoMarkImg.addEventListener('click', () => openLightbox([logoMarkImg], 0));
-    logoMarkImg.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' '){
-        e.preventDefault();
-        openLightbox([logoMarkImg], 0);
-      }
-    });
-  }
 
   lbClose.addEventListener('click', closeLightbox);
   lbPrev.addEventListener('click', showPrev);
