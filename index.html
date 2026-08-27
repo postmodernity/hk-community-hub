@@ -581,6 +581,17 @@
     transform:scale(1.04);
     opacity:0.94;
   }
+  .past-event-photos.single-photo{
+    grid-template-columns:1fr;
+  }
+  .past-event-photos.single-photo .past-event-photo{
+    aspect-ratio:auto;
+  }
+  .past-event-photos.single-photo .past-event-photo img{
+    width:100%;
+    height:auto;
+    object-fit:contain;
+  }
   .past-event-body{padding:24px 26px;}
   .past-event-date{
     font-family:var(--sans);
@@ -887,6 +898,16 @@
           <p>A serving British Army officer with Hong Kong heritage discussed the military history of Hong Kong, wartime commemorations including Liberation Day, and the Act of Remembrance, at Lecture Theatre 02, The Diamond.</p>
         </div>
       </div>
+      <div class="past-event">
+        <div class="past-event-photos single-photo">
+          <div class="past-event-photo"><img src="assets/events/open-call-advisory-board.jpg" alt="Open Call poster: Shape Our Future, seeking Community Advisory Board members, join before 20 August 2026" loading="lazy"></div>
+        </div>
+        <div class="past-event-body">
+          <p class="past-event-date">Closed 20 August 2026</p>
+          <h3>Open Call: Shape Our Future</h3>
+          <p>An open call for Community Advisory Board members to help strengthen the Hong Kong community in Sheffield. No previous board experience required.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1072,6 +1093,9 @@
     const img = activeImgs[currentIndex];
     lbImg.src = img.src;
     lbImg.alt = img.alt;
+    const multi = activeImgs.length > 1;
+    lbPrev.style.display = multi ? '' : 'none';
+    lbNext.style.display = multi ? '' : 'none';
   }
 
   function openLightbox(imgs, index){
@@ -1108,7 +1132,7 @@
     img.addEventListener('click', () => openLightbox(eventPosterImgs, index));
   });
 
-  /* Past-event photos open the same lightbox, scoped to each event's own pair */
+  /* Past-event photos open the same lightbox, scoped to each event's own photo set */
   document.querySelectorAll('.past-event-photos').forEach(group => {
     const imgs = Array.from(group.querySelectorAll('img'));
     imgs.forEach((img, index) => {
