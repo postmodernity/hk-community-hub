@@ -584,9 +584,6 @@
   .past-event-photos.single-photo{
     grid-template-columns:1fr;
   }
-  .past-event-photos.three-photos{
-    grid-template-columns:repeat(3, 1fr);
-  }
   .past-event-photos.single-photo .past-event-photo{
     aspect-ratio:auto;
   }
@@ -772,6 +769,12 @@
     </div>
     <div class="gallery-strips" id="galleryStrips">
       <div class="gallery-item" data-aspect="1">
+        <img src="assets/events/uk-remembrance-01.jpg" alt="Speaker giving the UK Culture of Remembrance talk, with medals and presentation slides" loading="lazy">
+      </div>
+      <div class="gallery-item" data-aspect="1">
+        <img src="assets/events/streets-on-screen-01.jpg" alt="Streets on Screen exhibition display, with visitors viewing photography and a film still" loading="lazy">
+      </div>
+      <div class="gallery-item" data-aspect="1">
         <img src="assets/gallery/photo1.jpg" alt="Project Sifu filmmaking workshop" loading="lazy">
       </div>
       <div class="gallery-item" data-aspect="1">
@@ -894,12 +897,12 @@
       <h2>What we've hosted</h2>
       <p style="color:var(--ink-soft)">A look back at recent talks and exhibitions from the Hub. Click any photo to view it full size.</p>
     </div>
+    <!-- PAST EVENT CONVENTION: use the event's main poster only, in the single-photo
+         format below, so every card holds one image and stays a consistent height. -->
     <div class="past-event-row">
       <div class="past-event">
-        <div class="past-event-photos three-photos">
+        <div class="past-event-photos single-photo">
           <div class="past-event-photo"><img src="assets/events/uk-remembrance-poster.jpg" alt="UK Culture of Remembrance talk poster, 22 August 2026, Lecture Theatre 02, The Diamond" loading="lazy"></div>
-          <div class="past-event-photo"><img src="assets/events/uk-remembrance-01.jpg" alt="Speaker giving the UK Culture of Remembrance talk, with medals and presentation slides" loading="lazy"></div>
-          <div class="past-event-photo"><img src="assets/events/uk-remembrance-02.jpg" alt="Title slide for the UK Culture of Remembrance talk, 22 August 2026" loading="lazy"></div>
         </div>
         <div class="past-event-body">
           <p class="past-event-date">22 August 2026</p>
