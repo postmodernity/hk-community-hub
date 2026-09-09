@@ -437,6 +437,56 @@
     .gallery-item img{aspect-ratio:1/1; height:auto;}
   }
 
+  /* ---------- video highlights ---------- */
+  .video-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .video-card{
+    position:relative;
+    border-radius:16px;
+    overflow:hidden;
+    background:var(--white);
+    border:1px solid var(--rule);
+    box-shadow:var(--shadow);
+  }
+  .video-card video{
+    display:block;
+    width:100%;
+    aspect-ratio:9/16;
+    object-fit:cover;
+    background:#0d0714;
+    cursor:pointer;
+  }
+  .video-card-caption{
+    padding:16px 18px;
+  }
+  .video-card-caption p{
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    margin:0;
+  }
+  .video-mute-hint{
+    position:absolute;
+    top:14px;
+    right:14px;
+    padding:5px 11px;
+    border-radius:999px;
+    background:rgba(28,0,62,0.6);
+    color:var(--white);
+    font-size:0.72rem;
+    font-weight:600;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    pointer-events:none;
+    transition:opacity 0.2s ease;
+  }
+  .video-card.playing .video-mute-hint{opacity:0;}
+  @media (max-width:880px){
+    .video-grid{grid-template-columns:1fr; max-width:360px; margin:0 auto;}
+  }
+
   /* ---------- lightbox ---------- */
   .lightbox{
     display:none;
@@ -716,6 +766,7 @@
     <a href="#about"><span class="jumpnav-label">About</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#what-we-do"><span class="jumpnav-label">What we do</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#gallery"><span class="jumpnav-label">Gallery</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
+    <a href="#videos"><span class="jumpnav-label">Videos</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#get-involved"><span class="jumpnav-label">Get involved</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#events"><span class="jumpnav-label">Events</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#past-events"><span class="jumpnav-label">Past events</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
@@ -848,6 +899,43 @@
       <p class="lightbox-caption" id="lbCaption"></p>
     </div>
     <button class="lightbox-next" id="lbNext" aria-label="Next photo">&#8250;</button>
+  </div>
+</section>
+
+<section id="videos">
+  <!-- VIDEO CONVENTION: video files live in /assets/videos/, lowercase-hyphenated filename, .mp4 extension.
+       Each <video> needs a poster (a still frame or photo) so the card isn't blank before hover.
+       Playback starts, unmuted, on mouseenter, and stops, muted, on mouseleave; a click on mobile does the same.
+       To add a new clip, copy a .video-card block, point src and poster at the new files, and write the caption. -->
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">From the Hub</p>
+      <h2>Highlights in motion</h2>
+      <p style="color:var(--ink-soft)">A closer look at recent moments from the Hub. Hover over a clip to watch with sound.</p>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <video src="assets/videos/streets-on-screen.mp4" poster="assets/videos/streets-on-screen-poster.jpg" muted loop playsinline preload="metadata"></video>
+        <span class="video-mute-hint">Hover to play</span>
+        <div class="video-card-caption">
+          <p>The opening of the Streets on Screen exhibition, held on 20 August 2026.</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <video src="assets/videos/uk-remembrance.mp4" poster="assets/videos/uk-remembrance-poster.jpg" muted loop playsinline preload="metadata"></video>
+        <span class="video-mute-hint">Hover to play</span>
+        <div class="video-card-caption">
+          <p>A highlight from the UK Culture of Remembrance talk, given by Major John Lam on 22 August 2026.</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <video src="assets/videos/project-sifu-2-premiere.mp4" poster="assets/videos/project-sifu-2-premiere-poster.jpg" muted loop playsinline preload="metadata"></video>
+        <span class="video-mute-hint">Hover to play</span>
+        <div class="video-card-caption">
+          <p>Project Sifu 2 premiered in London at the Fighting Spirit Film Festival, Rio Cinema, on 5 September 2026.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1219,6 +1307,43 @@
       else showPrev();
     }
   }, { passive: true });
+
+  /* ---------- Video highlight cards: play with sound on hover ----------
+     A click does the same, so touch devices (which have no hover) can
+     still play a clip; a second click or tap elsewhere pauses it again. */
+  document.querySelectorAll('.video-card').forEach(card => {
+    const video = card.querySelector('video');
+    if (!video) return;
+
+    function startPlaying(){
+      document.querySelectorAll('.video-card.playing').forEach(other => {
+        if (other !== card){
+          const otherVideo = other.querySelector('video');
+          otherVideo.pause();
+          otherVideo.currentTime = 0;
+          otherVideo.muted = true;
+          other.classList.remove('playing');
+        }
+      });
+      video.muted = false;
+      video.play().catch(() => {});
+      card.classList.add('playing');
+    }
+
+    function stopPlaying(){
+      video.pause();
+      video.currentTime = 0;
+      video.muted = true;
+      card.classList.remove('playing');
+    }
+
+    card.addEventListener('mouseenter', startPlaying);
+    card.addEventListener('mouseleave', stopPlaying);
+    card.addEventListener('click', () => {
+      if (card.classList.contains('playing')) stopPlaying();
+      else startPlaying();
+    });
+  });
 
 </script>
 
