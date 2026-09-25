@@ -401,6 +401,34 @@
     .strand-row::before{display:none;}
   }
 
+  /* ---------- hub team ---------- */
+  .team-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+    align-items:start;
+  }
+  .team-card{
+    background:var(--white);
+    border:1px solid var(--rule);
+    border-radius:18px;
+    padding:30px;
+  }
+  .team-card h3{font-size:1.15rem; margin-bottom:0.2em;}
+  .team-card .team-role{
+    font-size:0.78rem;
+    font-weight:700;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--violet);
+    margin:0 0 0.9em;
+  }
+  .team-card p{font-size:0.94rem; color:var(--ink-soft);}
+  .team-card p:last-child{margin-bottom:0;}
+  @media (max-width:760px){
+    .team-grid{grid-template-columns:1fr;}
+  }
+
   /* ---------- advisors ---------- */
   .advisor-grid{
     display:grid;
@@ -784,6 +812,7 @@
   <nav class="hero-jumpnav" aria-label="Jump to section">
     <a href="#about"><span class="jumpnav-label">About</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#what-we-do"><span class="jumpnav-label">What we do</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
+    <a href="#team"><span class="jumpnav-label">Team</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#advisors"><span class="jumpnav-label">Advisors</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#gallery"><span class="jumpnav-label">Gallery</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#videos"><span class="jumpnav-label">Videos</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
@@ -850,7 +879,29 @@
   </div>
 </section>
 
-<section id="advisors">
+<section id="team">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Hub Team</p>
+      <h2>Leadership</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <h3>Dr Wayne Wong</h3>
+        <p class="team-role">Hub Director</p>
+        <p>Dr Wayne Wong is a Lecturer in East Asian Studies at the University of Sheffield. He holds a PhD in Film Studies and Comparative Literature from King's College London and the University of Hong Kong. His research centres on global martial arts and action cinema, with a particular interest in their politics, aesthetics and cross-cultural circulation. He is the author of <em>Martial Arts Ecology: Aesthetics, Philosophy, and Cinematic Mediation</em> (Edinburgh University Press, 2026), and his work has appeared in leading journals and edited volumes, including <em>Asian Cinema</em>, <em>Martial Arts Studies</em>, <em>Global Media and China</em>, <em>Journal of Contemporary Chinese Art</em>, <em>Asian Ethnicity</em>, <em>Afro-Futurism in Black Panther</em>, <em>The Worlds of John Wick</em>, <em>The Cinema of Stephen Chow</em>, and <em>Fighting Stars: Stardom and Reception in Hong Kong Martial Arts Cinema</em>. He serves as an editor of <em>Martial Arts Studies</em>, the flagship journal of the Martial Arts Studies Association (MASA), and is director of Project Sifu (2025) and Project Sifu 2 (2026), a documentary and short film empowering UK youth through martial arts cinema and collaborative filmmaking.</p>
+        <p>Wong is currently developing new strands of work with artists, curators, filmmakers and community organisations across the UK. Through film, exhibition and performance, he explores emerging forms of Hong Kong diasporic identity and the creative possibilities that arise from transnational cultural exchange.</p>
+      </div>
+      <div class="team-card">
+        <h3>Clara Cheung</h3>
+        <p class="team-role">Impact Associate</p>
+        <p>Clara Cheung is an artist-curator with a strong interest in performance art and community-based projects. Based in Sheffield, she is currently completing her PhD at the University of York, researching the history of Hong Kong's outward-facing art exhibitions between the late 1950s and 1970s.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="advisors">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Advisory Group</p>
