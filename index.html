@@ -401,6 +401,25 @@
     .strand-row::before{display:none;}
   }
 
+  /* ---------- advisors ---------- */
+  .advisor-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .advisor-card{
+    background:var(--white);
+    border:1px solid var(--rule);
+    border-radius:16px;
+    padding:26px 24px;
+  }
+  .advisor-card h3{font-size:1.05rem; margin-bottom:0.5em;}
+  .advisor-card p{font-size:0.92rem; color:var(--ink-soft); margin-bottom:0;}
+  .advisor-card a{color:var(--violet); font-weight:600; text-decoration:underline;}
+  @media (max-width:880px){
+    .advisor-grid{grid-template-columns:1fr;}
+  }
+
   /* ---------- gallery (fluid interactive) ---------- */
   .gallery-strips{
     position:relative;
@@ -765,6 +784,7 @@
   <nav class="hero-jumpnav" aria-label="Jump to section">
     <a href="#about"><span class="jumpnav-label">About</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#what-we-do"><span class="jumpnav-label">What we do</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
+    <a href="#advisors"><span class="jumpnav-label">Advisors</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#gallery"><span class="jumpnav-label">Gallery</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#videos"><span class="jumpnav-label">Videos</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#get-involved"><span class="jumpnav-label">Get involved</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
@@ -830,6 +850,46 @@
   </div>
 </section>
 
+<section id="advisors">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Advisory Group</p>
+      <h2>Guided by the community</h2>
+      <p style="color:var(--ink-soft)">The Hub's quarterly advisory group brings together researchers, artists, practitioners and community leaders to guide delivery and keep programming grounded in real community need.</p>
+    </div>
+    <div class="advisor-grid">
+      <div class="advisor-card">
+        <h3>Yung-Hang Bruce Lai</h3>
+        <p>Yung-Hang Bruce Lai is a film critic, researcher and programmer from Hong Kong. He is a member of the Hong Kong Film Critics Society and Programme Director of the Festival du Film Hongkongais de Paris. He holds a PhD in Film Studies from King's College London, with research interests in Chinese-language cinema, comedy and diasporic film, and is currently a Teaching Fellow in Chinese Studies at Durham University.</p>
+      </div>
+      <div class="advisor-card">
+        <h3>Sunshine Wong Yet Chor</h3>
+        <p>Sunshine Wong Yet Chor is an art worker, researcher and facilitator, born and raised in Hong Kong. She worked there as an art teacher before moving to Berlin, where she completed her MA at Berlin Universität der Künste while curating live art events across the city; her doctoral thesis, drawing on affect and queer studies, examined the relational material of social art practices. She is Director at Bloc Projects in Sheffield, where she shapes a programme rooted in equity, embodied connection and critical care.</p>
+      </div>
+      <div class="advisor-card">
+        <h3>Phyllis Wong</h3>
+        <p>Phyllis Wong served with an international English-speaking church in Hong Kong for eighteen years before her retirement in 2025. Before entering pastoral ministry, she worked as a social worker and taught in the tertiary education sector. She co-founded RainLily, supporting survivors of sexual violence, and the Covenant of the Rainbow, advocating for sexual minorities, and launched a peacemaking initiative within her church supporting refugees and asylum seekers in Hong Kong. She is guided by the belief that life is a precious gift from God, and that every individual deserves an abundant life rooted in dignity, equality and freedom.</p>
+      </div>
+      <div class="advisor-card">
+        <h3>Eelyn Lee 李綺蓮</h3>
+        <p>Eelyn Lee is an award-winning artist and filmmaker of dual British-Hong Kong heritage, whose work has been presented at the Barbican, Tate Modern, Whitechapel Gallery, National Portrait Gallery, Palais de Tokyo, HKW, the São Paulo Architecture Biennial, the Karachi Biennial and international film festivals. Her practice blends costume, choreography, ritual and sound to explore identity, justice and multi-species migration. In response to Covid-related anti-Asian hate, she began an expansive body of work reimagining East and Southeast Asian diasporic identities, presenting <em>Ancestral Futures 源流之後</em> in 2024, a street procession in honour of the first recorded Chinese people in Sheffield. <a href="https://eelynlee.com/">eelynlee.com</a></p>
+      </div>
+      <div class="advisor-card">
+        <h3>Ming Hui</h3>
+        <p>Ming Hui is a community organiser and former director of a trade union for social workers in Hong Kong, bringing a dual professional background as both an educator and a social worker. She is co-founder of Re-Water, an arts and community platform launched in December 2021 through which Hong Kong culture flows through cultural diversity, freedom of expression and a philosophy of fluidity, like water. Now based in Sheffield, she has led community initiatives including the Lennon Flag Project, collaborates with partners such as Sheffield Museums on cultural celebrations, and works with theatre collective The Bare Project to bring Hong Kong narratives to life through performances inspired by the mythical figure Lo Ting (盧亭).</p>
+      </div>
+      <div class="advisor-card">
+        <h3>Tracy Lau</h3>
+        <p>Tracy Lau is a Hong Kong-born applied theatre practitioner, educator and community facilitator based in Yorkshire. Her work brings together theatre, education, training and community engagement to help people connect, build confidence and share their experiences. Since moving to the UK, she has worked with Wakefield College and Swarthmore Education Centre, and contributed to the Hong Kong Advisory Board organised by Migration Yorkshire, with a continuing commitment to community development, inclusion and connection within the Hong Kong community in Yorkshire.</p>
+      </div>
+      <div class="advisor-card">
+        <h3>Gemma O'Neill</h3>
+        <p>Gemma O'Neill is a Hong Kong Research Analyst at the Foreign, Commonwealth and Development Office.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="gallery">
   <!-- GALLERY CONVENTION: photos live in /assets/gallery/, lowercase filename, no spaces, .jpg extension.
        Set data-aspect to the real photo's width divided by height (4:3 = 1.333, 1:1 = 1, 3:2 = 1.5, portrait 2:3 = 0.667).
@@ -842,6 +902,9 @@
       <p style="color:var(--ink-soft)">A look at the workshops, screenings and community moments the Hub grows from. Click any photo to view it full size.</p>
     </div>
     <div class="gallery-strips" id="galleryStrips">
+      <div class="gallery-item" data-aspect="1">
+        <img src="assets/gallery/photo15.jpg" alt="Hub banner, the printed Welcoming the Moon poetry collection, guests and lantern-decorated festival tables at Weston Park Museum" loading="lazy" data-caption="A highlight from Welcoming the Moon, the Hub's Mid-Autumn Festival celebration at Weston Park Museum, held on 19 September 2026.">
+      </div>
       <div class="gallery-item" data-aspect="1">
         <img src="assets/gallery/photo14.jpg" alt="Audience, screen, Q&A and group photo from the Hub's first film screening with Carrie Shen" loading="lazy" data-caption="The Hong Kong Community Hub held its first film screening on 12 September 2026, featuring short films by filmmaker Carrie Shen, who travelled from London to take part, followed by a Q&amp;A with Dr Wayne Wong.">
       </div>
@@ -982,22 +1045,6 @@
          Omit the <img class="event-poster"> line for events without a poster yet. -->
     <div class="event-row">
       <div class="event-card">
-        <img class="event-poster" src="assets/events/streets-on-screen-poster.jpg" alt="Streets on Screen exhibition poster, re-imagining Hong Kong and Sheffield through cinema, 20 August to 18 September 2026" loading="lazy">
-        <div class="event-date">Until 18 September 2026</div>
-        <div class="event-body">
-          <h3>Streets on Screen</h3>
-          <p>Re-imagining Hong Kong and Sheffield through cinema: a showcase of photography and mixed media art by project collaborators Ming, Sony, Shan Cheng, Nam Huh, Ayesha Iqbal, John Lau, Claire Li, Johnathan Liu, Ernie Tay and AY Tung. C&amp;G Artpartment, 71 Holme Lane, S6 4JP. Open Wed&ndash;Sat, 1&ndash;5.30pm, or by appointment.</p>
-        </div>
-      </div>
-      <div class="event-card">
-        <img class="event-poster" src="assets/events/welcoming-the-moon-poster.jpg" alt="Welcoming the Moon festival poster, Saturday 19 September 2026, Weston Park Museum" loading="lazy">
-        <div class="event-date">19 September 2026</div>
-        <div class="event-body">
-          <h3>Welcoming the Moon: A Cross-Cultural Festival Party</h3>
-          <p>A free festival for ESEA Heritage Month at Weston Park Museum, with craft, performance and storytelling around moon-related traditions. 11am&ndash;4pm, Weston Park Museum, S10 2TP. Free, donations welcome.</p>
-        </div>
-      </div>
-      <div class="event-card">
         <img class="event-poster" src="assets/events/project-sifu-2-sheffield-poster.jpg" alt="Project Sifu 2 poster, directed by Wayne Wong, screening 7 October 2026, 2 to 3.15pm, Nelson Mandela Auditorium, University of Sheffield Students' Union" loading="lazy">
         <div class="event-date">7 October 2026</div>
         <div class="event-body">
@@ -1019,6 +1066,26 @@
     <!-- PAST EVENT CONVENTION: use the event's main poster only, in the single-photo
          format below, so every card holds one image and stays a consistent height. -->
     <div class="past-event-row">
+      <div class="past-event">
+        <div class="past-event-photos single-photo">
+          <div class="past-event-photo"><img src="assets/events/welcoming-the-moon-poster.jpg" alt="Welcoming the Moon festival poster, Saturday 19 September 2026, Weston Park Museum" loading="lazy"></div>
+        </div>
+        <div class="past-event-body">
+          <p class="past-event-date">19 September 2026</p>
+          <h3>Welcoming the Moon: A Cross-Cultural Festival Party</h3>
+          <p>A free festival for ESEA Heritage Month at Weston Park Museum, with craft, performance and storytelling around moon-related traditions.</p>
+        </div>
+      </div>
+      <div class="past-event">
+        <div class="past-event-photos single-photo">
+          <div class="past-event-photo"><img src="assets/events/streets-on-screen-poster.jpg" alt="Streets on Screen exhibition poster, re-imagining Hong Kong and Sheffield through cinema, 20 August to 18 September 2026" loading="lazy"></div>
+        </div>
+        <div class="past-event-body">
+          <p class="past-event-date">20 August &ndash; 18 September 2026</p>
+          <h3>Streets on Screen</h3>
+          <p>Re-imagining Hong Kong and Sheffield through cinema: a showcase of photography and mixed media art by project collaborators Ming, Sony, Shan Cheng, Nam Huh, Ayesha Iqbal, John Lau, Claire Li, Johnathan Liu, Ernie Tay and AY Tung, at C&amp;G Artpartment, 71 Holme Lane.</p>
+        </div>
+      </div>
       <div class="past-event">
         <div class="past-event-photos single-photo">
           <div class="past-event-photo"><img src="assets/events/carrie-shen-screening-poster.jpg" alt="Short Film Screening and Discussion with Carrie Shen poster, Saturday 12 September 2026, Firth Hall, University of Sheffield" loading="lazy"></div>
