@@ -627,6 +627,26 @@
   @media (max-width:760px){
     .involve-grid{grid-template-columns:1fr;}
   }
+  .member-block{
+    display:grid;
+    grid-template-columns:minmax(0,340px) 1fr;
+    gap:36px;
+    align-items:center;
+    margin-top:28px;
+    background:var(--white);
+    border:1px solid var(--rule);
+    border-radius:18px;
+    padding:32px;
+  }
+  .member-block img{width:100%; height:auto; border-radius:12px; display:block; box-shadow:var(--shadow);}
+  .member-block h3{font-size:1.4rem; margin-bottom:0.4em;}
+  .member-block p{color:var(--ink-soft); font-size:0.96rem;}
+  .member-benefits{list-style:none; padding:0; margin:18px 0 22px; display:grid; gap:10px;}
+  .member-benefits li{font-size:0.96rem; color:var(--ink-soft);}
+  .member-benefits strong{color:var(--ink); font-family:var(--serif);}
+  @media (max-width:760px){
+    .member-block{grid-template-columns:1fr; padding:24px; gap:24px;}
+  }
 
   /* ---------- events ---------- */
   .event-row{
@@ -1095,6 +1115,22 @@
         <h3>For organisations and partners</h3>
         <p>If your organisation works with Hong Kong or wider East and Southeast Asian communities in the North of England, we would welcome a conversation about joining the advisory group.</p>
         <a class="btn btn-outline" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="member-block" id="membership">
+      <img src="assets/events/membership-poster.jpg" alt="Poster: Join the HK Community Hub @ UoS, become a member today. Member benefits include shaping the Hub, micro-grants of up to £500, university venues, promotion, network and support, and policy engagement." loading="lazy">
+      <div>
+        <h3>Become a member of the Hub</h3>
+        <p>Membership connects Hong Kong communities across Sheffield, Yorkshire and Northern England, fostering social integration, cultural participation and local belonging.</p>
+        <ul class="member-benefits">
+          <li><strong>Shape the Hub.</strong> Join shared programming.</li>
+          <li><strong>Seed Funding.</strong> Apply for micro-grants of up to £500.</li>
+          <li><strong>University Venues.</strong> Access selected venues.</li>
+          <li><strong>Promotion.</strong> Feature your events and stories.</li>
+          <li><strong>Network &amp; Support.</strong> Connect with local creatives, community groups and academics.</li>
+          <li><strong>Policy Engagement.</strong> Share your experiences and perspectives.</li>
+        </ul>
+        <a class="btn btn-solid" href="https://docs.google.com/forms/d/e/1FAIpQLSfIR_ejxWHQpHz4Krb0ueSYAIoABDbh2mCYafI8qyMRqfmb9w/viewform" target="_blank" rel="noopener">Register as a member</a>
       </div>
     </div>
   </div>
