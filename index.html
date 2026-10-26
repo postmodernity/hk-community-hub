@@ -638,6 +638,8 @@
     border-radius:18px;
     padding:32px;
   }
+  .member-zoom{display:block; width:100%; padding:0; border:0; background:none; cursor:zoom-in; border-radius:12px;}
+  .member-zoom:focus-visible{outline:3px solid var(--violet); outline-offset:3px;}
   .member-block img{width:100%; height:auto; border-radius:12px; display:block; box-shadow:var(--shadow);}
   .member-block h3{font-size:1.4rem; margin-bottom:0.4em;}
   .member-block p{color:var(--ink-soft); font-size:0.96rem;}
@@ -986,6 +988,9 @@
     </div>
     <div class="gallery-strips" id="galleryStrips">
       <div class="gallery-item" data-aspect="1">
+        <img src="assets/gallery/photo17.jpg" alt="Railways and Heritage talk poster on screen, Dr Adonis Li speaking, the audience in Diamond Workroom 2, and the speaker with two members of the Hub team" loading="lazy" data-caption="Dr Adonis Li, Lecturer in East Asian History at the University of Lincoln, gave the public talk Railways and Heritage: The History of the Tsim Sha Tsui Clock Tower in Diamond Workroom 2, University of Sheffield, on 24 October 2026. The talk was delivered in Cantonese.">
+      </div>
+      <div class="gallery-item" data-aspect="1">
         <img src="assets/gallery/photo16.jpg" alt="Four photos from the Project Sifu 2 screening at the Nelson Mandela Auditorium, University of Sheffield" loading="lazy" data-caption="Project Sifu 2 was screened at the Nelson Mandela Auditorium, University of Sheffield, on 7 October 2026, followed by a discussion and Q&amp;A with the Project Sifu team.">
       </div>
       <div class="gallery-item" data-aspect="1">
@@ -1067,6 +1072,13 @@
     </div>
     <div class="video-grid">
       <div class="video-card">
+        <video src="assets/videos/railways-and-heritage.mp4" poster="assets/videos/railways-and-heritage-poster.jpg" muted loop playsinline preload="metadata"></video>
+        <span class="video-mute-hint">Hover and click to play</span>
+        <div class="video-card-caption">
+          <p>A highlight from Railways and Heritage, a public talk by Dr Adonis Li on the Tsim Sha Tsui Clock Tower, held on 24 October 2026.</p>
+        </div>
+      </div>
+      <div class="video-card">
         <video src="assets/videos/welcoming-the-moon.mp4" poster="assets/videos/welcoming-the-moon-poster.jpg" muted loop playsinline preload="metadata"></video>
         <span class="video-mute-hint">Hover and click to play</span>
         <div class="video-card-caption">
@@ -1118,7 +1130,9 @@
       </div>
     </div>
     <div class="member-block" id="membership">
-      <img src="assets/events/membership-poster.jpg" alt="Poster: Join the HK Community Hub @ UoS, become a member today. Member benefits include shaping the Hub, micro-grants of up to £500, university venues, promotion, network and support, and policy engagement." loading="lazy">
+      <button type="button" class="member-zoom" aria-label="Enlarge the membership poster">
+        <img src="assets/events/membership-poster.jpg" alt="Poster: Join the HK Community Hub @ UoS, become a member today. Member benefits include shaping the Hub, micro-grants of up to £500, university venues, promotion, network and support, and policy engagement." loading="lazy" data-caption="Join the HK Community Hub @ UoS. Become a member today to shape the Hub, apply for micro-grants of up to £500, access selected university venues, promote your events and stories, network with local creatives, community groups and academics, and share your experiences and perspectives.">
+      </button>
       <div>
         <h3>Become a member of the Hub</h3>
         <p>Membership connects Hong Kong communities across Sheffield, Yorkshire and Northern England, fostering social integration, cultural participation and local belonging.</p>
@@ -1146,14 +1160,7 @@
     <!-- EVENT POSTERS: optional, stored in /assets/events/, lowercase filename, hyphens allowed, .jpg extension.
          Omit the <img class="event-poster"> line for events without a poster yet. -->
     <div class="event-row">
-      <div class="event-card">
-        <img class="event-poster" src="assets/events/railways-and-heritage-poster.jpg" alt="Railways and Heritage public talk poster, Dr Adonis Li on the Tsim Sha Tsui Clock Tower, 24 October 2026, 3 to 4.30pm, Diamond Workroom 2, University of Sheffield" loading="lazy">
-        <div class="event-date">24 October 2026</div>
-        <div class="event-body">
-          <h3>Railways and Heritage: The History of the Tsim Sha Tsui Clock Tower</h3>
-          <p>Dr Adonis Li, Lecturer in East Asian History at the University of Lincoln, explores attempts to preserve the demolished Kowloon railway terminus, when a nascent civil society sought help from local government, London officials and even the Queen. 3&ndash;4.30pm, Diamond Workroom 2. Delivered in Cantonese.</p>
-        </div>
-      </div>
+      <p style="color:var(--ink-soft)">There are no upcoming events at the moment. New dates will be announced here soon, and you can see what we have hosted below.</p>
     </div>
   </div>
 </section>
@@ -1168,6 +1175,16 @@
     <!-- PAST EVENT CONVENTION: use the event's main poster only, in the single-photo
          format below, so every card holds one image and stays a consistent height. -->
     <div class="past-event-row">
+      <div class="past-event">
+        <div class="past-event-photos single-photo">
+          <div class="past-event-photo"><img src="assets/events/railways-and-heritage-poster.jpg" alt="Railways and Heritage public talk poster, Dr Adonis Li, 24 October 2026, Diamond Workroom 2, University of Sheffield" loading="lazy"></div>
+        </div>
+        <div class="past-event-body">
+          <p class="past-event-date">24 October 2026</p>
+          <h3>Railways and Heritage: The History of the Tsim Sha Tsui Clock Tower</h3>
+          <p>A public talk by Dr Adonis Li, Lecturer in East Asian History at the University of Lincoln, on attempts to preserve the demolished Kowloon railway terminus, when a nascent civil society sought help from local government, London officials and even the Queen. Delivered in Cantonese in Diamond Workroom 2.</p>
+        </div>
+      </div>
       <div class="past-event">
         <div class="past-event-photos single-photo">
           <div class="past-event-photo"><img src="assets/events/project-sifu-2-sheffield-poster.jpg" alt="Project Sifu 2 poster, directed by Wayne Wong, screened 7 October 2026, Nelson Mandela Auditorium, University of Sheffield Students' Union" loading="lazy"></div>
@@ -1471,6 +1488,12 @@
   eventPosterImgs.forEach((img, index) => {
     img.addEventListener('click', () => openLightbox(eventPosterImgs, index));
   });
+
+  /* Membership poster opens the same lightbox on its own */
+  const memberImg = document.querySelector('.member-zoom img');
+  if (memberImg){
+    memberImg.closest('.member-zoom').addEventListener('click', () => openLightbox([memberImg], 0));
+  }
 
   /* Past-event photos open the same lightbox, scoped to each event's own photo set */
   document.querySelectorAll('.past-event-photos').forEach(group => {
