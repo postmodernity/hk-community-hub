@@ -626,8 +626,9 @@
     display:grid;
     grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
     gap:64px;
-    align-items:center;
+    align-items:start;
   }
+  .feature-text{position:sticky; top:48px;}
   .feature h2{
     color:var(--white);
     font-size:clamp(2.1rem, 4.4vw, 3.3rem);
@@ -686,35 +687,62 @@
   .feature-pairs{
     position:relative;
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
+    grid-template-columns:1fr;
+    gap:18px;
     margin-top:40px;
   }
   .feature-pair{
+    margin:0;
     background:rgba(255,255,255,0.09);
     border:1px solid rgba(255,255,255,0.2);
-    border-radius:14px;
-    padding:14px 16px;
-    font-size:0.88rem;
-    line-height:1.45;
-    color:rgba(255,255,255,0.9);
+    border-radius:16px;
+    overflow:hidden;
   }
-  .feature-pair strong{
+  .feature-pair img{
+    width:100%;
+    aspect-ratio:644 / 234;
+    object-fit:cover;
     display:block;
-    font-family:var(--serif);
-    font-size:1rem;
+  }
+  .feature-pair-body{padding:16px 20px 18px;}
+  .feature-pair-meta{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    font-size:0.74rem;
+    font-weight:700;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--violet-powder);
+    margin:0 0 6px;
+  }
+  .feature-pair h3{
+    font-size:1.2rem;
     color:var(--white);
-    margin-bottom:2px;
+    margin:0 0 6px;
+  }
+  .feature-pair p{
+    font-size:0.92rem;
+    line-height:1.5;
+    color:rgba(255,255,255,0.86);
+    margin:0 0 12px;
+  }
+  .feature-tags{display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; margin:0;}
+  .feature-tags li{
+    border:1px solid rgba(255,255,255,0.3);
+    border-radius:999px;
+    padding:3px 12px;
+    font-size:0.78rem;
+    font-weight:600;
+    color:var(--white);
   }
   .feature .btn-primary:focus-visible,
   .feature .btn-ghost:focus-visible{outline-color:var(--white);}
   @media (max-width:900px){
     .feature-grid{grid-template-columns:1fr; gap:48px;}
+    .feature-text{position:static;}
     .feature-visual{max-width:560px;}
     .feature-frame::before{inset:16px -10px -10px 16px;}
-  }
-  @media (max-width:480px){
-    .feature-pairs{grid-template-columns:1fr;}
   }
 
   /* ---------- get involved ---------- */
@@ -1015,7 +1043,7 @@
 <section class="feature" id="streets-on-screen">
   <div class="wrap">
     <div class="feature-grid">
-      <div>
+      <div class="feature-text">
         <p class="eyebrow">Featured project</p>
         <h2>Streets on Screen</h2>
         <p class="feature-zh" lang="zh-Hant">映畫街道</p>
@@ -1034,8 +1062,24 @@
           <img src="assets/events/streets-on-screen-banner.jpg" alt="Streets on Screen title graphic in red, teal and yellow blocks: Re-imagining Hong Kong and Sheffield Through Cinema" loading="lazy">
         </div>
         <div class="feature-pairs">
-          <div class="feature-pair"><strong>Portland Works</strong>paired with <em>In the Mood for Love</em> (2000), by Claire Li</div>
-          <div class="feature-pair"><strong>Sheffield staircases</strong>paired with <em>Rouge</em> (1987), by Sony</div>
+          <figure class="feature-pair">
+            <img src="assets/events/streets-on-screen-sony.jpg" alt="Side by side: a still from Rouge (1987) of a man and a woman on a dark staircase, and Sony's Sheffield photograph recreating the scene on an outdoor stone staircase" loading="lazy">
+            <figcaption class="feature-pair-body">
+              <p class="feature-pair-meta"><span>Sony</span><span lang="zh-Hant">胭脂扣 &middot; 1987</span></p>
+              <h3>Staircases between two worlds</h3>
+              <p>Sheffield&rsquo;s staircases recall <em>Rouge</em>, where a darkly comic exchange turns &ldquo;above&rdquo; and &ldquo;below&rdquo; into a conversation between the living and the dead.</p>
+              <ul class="feature-tags"><li>Memory</li><li>Dark humour</li></ul>
+            </figcaption>
+          </figure>
+          <figure class="feature-pair">
+            <img src="assets/events/streets-on-screen-claire.jpg" alt="Side by side: a still from In the Mood for Love (2000) of a weathered wall on a narrow street, and Claire Li's Sheffield photograph of the red-brick Portland Works" loading="lazy">
+            <figcaption class="feature-pair-body">
+              <p class="feature-pair-meta"><span>Claire Li</span><span lang="zh-Hant">花樣年華 &middot; 2000</span></p>
+              <h3>Quiet witnesses to time</h3>
+              <p>A weathered wall and a station clock hold the feelings of waiting, secrets and regret as the city moves around them.</p>
+              <ul class="feature-tags"><li>Time</li><li>Memory</li></ul>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </div>
