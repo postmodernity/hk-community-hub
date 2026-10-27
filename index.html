@@ -607,6 +607,116 @@
     .lightbox-caption{font-size:0.86rem; max-height:20vh;}
   }
 
+  /* ---------- featured project ---------- */
+  .feature{
+    position:relative;
+    overflow:hidden;
+    color:var(--white);
+    background:
+      radial-gradient(ellipse 60% 70% at 88% 12%, rgba(217,194,240,0.22), transparent 70%),
+      radial-gradient(ellipse 50% 60% at 6% 96%, rgba(240,230,250,0.10), transparent 70%),
+      linear-gradient(135deg, var(--violet-dark) 0%, var(--violet) 100%);
+  }
+  .sr-only{
+    position:absolute; width:1px; height:1px; margin:-1px; padding:0;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+  .feature .eyebrow{color:var(--violet-powder);}
+  .feature-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+    gap:64px;
+    align-items:center;
+  }
+  .feature h2{
+    color:var(--white);
+    font-size:clamp(2.1rem, 4.4vw, 3.3rem);
+    margin-bottom:0.15em;
+  }
+  .feature-zh{
+    font-family:var(--serif);
+    font-size:1.25rem;
+    letter-spacing:0.28em;
+    color:var(--violet-powder);
+    margin:0 0 1.3em;
+  }
+  .feature-tagline{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.3rem;
+    line-height:1.4;
+    color:var(--white);
+    border-left:3px solid var(--violet-powder);
+    padding-left:18px;
+    margin:0 0 1.4em;
+  }
+  .feature p{color:rgba(255,255,255,0.86); font-size:1.02rem;}
+  .feature-facts{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    list-style:none;
+    padding:0;
+    margin:1.6em 0 1.8em;
+  }
+  .feature-facts li{
+    border:1px solid rgba(255,255,255,0.28);
+    background:rgba(255,255,255,0.07);
+    border-radius:999px;
+    padding:7px 16px;
+    font-size:0.88rem;
+    font-weight:600;
+    color:var(--white);
+  }
+  .feature-frame{position:relative;}
+  .feature-frame::before{
+    content:"";
+    position:absolute;
+    inset:22px -18px -18px 22px;
+    border:1.5px solid rgba(217,194,240,0.55);
+    border-radius:20px;
+  }
+  .feature-visual img{
+    position:relative;
+    width:100%;
+    height:auto;
+    border-radius:18px;
+    box-shadow:0 30px 60px -28px rgba(0,0,0,0.65);
+  }
+  .feature-pairs{
+    position:relative;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:40px;
+  }
+  .feature-pair{
+    background:rgba(255,255,255,0.09);
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:14px;
+    padding:14px 16px;
+    font-size:0.88rem;
+    line-height:1.45;
+    color:rgba(255,255,255,0.9);
+  }
+  .feature-pair strong{
+    display:block;
+    font-family:var(--serif);
+    font-size:1rem;
+    color:var(--white);
+    margin-bottom:2px;
+  }
+  .feature .btn-primary:focus-visible,
+  .feature .btn-ghost:focus-visible{outline-color:var(--white);}
+  @media (max-width:900px){
+    .feature-grid{grid-template-columns:1fr; gap:48px;}
+    .feature-visual{max-width:560px;}
+    .feature-frame::before{inset:16px -10px -10px 16px;}
+  }
+  @media (max-width:480px){
+    .feature-pairs{grid-template-columns:1fr;}
+  }
+
   /* ---------- get involved ---------- */
   .involve-grid{
     display:grid;
@@ -834,6 +944,7 @@
   <nav class="hero-jumpnav" aria-label="Jump to section">
     <a href="#about"><span class="jumpnav-label">About</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#what-we-do"><span class="jumpnav-label">What we do</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
+    <a href="#streets-on-screen"><span class="jumpnav-label">Streets on Screen</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#team"><span class="jumpnav-label">Team</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#advisors"><span class="jumpnav-label">Advisors</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
     <a href="#gallery"><span class="jumpnav-label">Gallery</span><span class="jumpnav-dot" aria-hidden="true"></span></a>
@@ -896,6 +1007,36 @@
         <div class="strand-mark">3</div>
         <h3>Impact Evidence and Engagement</h3>
         <p>Surveys, interviews and partner feedback build a clear picture of what works, reviewed together with partners and shared at a closing civic roundtable with community leaders and policymakers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature" id="streets-on-screen">
+  <div class="wrap">
+    <div class="feature-grid">
+      <div>
+        <p class="eyebrow">Featured project</p>
+        <h2>Streets on Screen</h2>
+        <p class="feature-zh" lang="zh-Hant">映畫街道</p>
+        <p class="feature-tagline">A scene. A place. A connection.</p>
+        <p>Streets on Screen is a co-curated exhibition that re-imagines Hong Kong and Sheffield through cinema. Each work pairs a scene from a Hong Kong film with a place in Sheffield, bringing together photography and mixed-media pieces by ten project collaborators.</p>
+        <p>Co-organised by C&amp;G Artpartment and Dr Wayne Wong of the University of Sheffield, and funded by the British Academy, the exhibition ran at C&amp;G Artpartment from 20 August to 18 September 2026. The work lives on online, with a map of the Sheffield locations behind each photograph and an exhibition archive.</p>
+        <ul class="feature-facts">
+          <li>Ten collaborators</li>
+          <li>Hong Kong cinema, Sheffield places</li>
+          <li>Funded by the British Academy</li>
+        </ul>
+        <a class="btn btn-primary" href="https://streetsonscreen.org.uk/" target="_blank" rel="noopener">Explore the project<span aria-hidden="true">&nbsp;&#8599;</span><span class="sr-only"> (opens streetsonscreen.org.uk in a new tab)</span></a>
+      </div>
+      <div class="feature-visual">
+        <div class="feature-frame">
+          <img src="assets/events/streets-on-screen-banner.jpg" alt="Streets on Screen title graphic in red, teal and yellow blocks: Re-imagining Hong Kong and Sheffield Through Cinema" loading="lazy">
+        </div>
+        <div class="feature-pairs">
+          <div class="feature-pair"><strong>Portland Works</strong>paired with <em>In the Mood for Love</em> (2000), by Claire Li</div>
+          <div class="feature-pair"><strong>Sheffield staircases</strong>paired with <em>Rouge</em> (1987), by Sony</div>
+        </div>
       </div>
     </div>
   </div>
