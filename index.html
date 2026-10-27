@@ -679,6 +679,7 @@
   }
   .feature-visual img{
     position:relative;
+    max-height:none;
     width:100%;
     height:auto;
     border-radius:18px;
@@ -687,9 +688,9 @@
   .feature-pairs{
     position:relative;
     display:grid;
-    grid-template-columns:1fr;
-    gap:18px;
-    margin-top:40px;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+    margin-top:72px;
   }
   .feature-pair{
     margin:0;
@@ -741,6 +742,7 @@
   @media (max-width:900px){
     .feature-grid{grid-template-columns:1fr; gap:48px;}
     .feature-text{position:static;}
+    .feature-pairs{grid-template-columns:1fr; gap:18px; margin-top:48px;}
     .feature-visual{max-width:560px;}
     .feature-frame::before{inset:16px -10px -10px 16px;}
   }
@@ -1049,7 +1051,7 @@
         <p class="feature-zh" lang="zh-Hant">映畫街道</p>
         <p class="feature-tagline">A scene. A place. A connection.</p>
         <p>Streets on Screen is a co-curated exhibition that re-imagines Hong Kong and Sheffield through cinema. Each work pairs a scene from a Hong Kong film with a place in Sheffield, bringing together photography and mixed-media pieces by ten project collaborators.</p>
-        <p>Co-organised by C&amp;G Artpartment and Dr Wayne Wong of the University of Sheffield, and funded by the British Academy, the exhibition ran at C&amp;G Artpartment from 20 August to 18 September 2026. The work lives on online, with a map of the Sheffield locations behind each photograph and an exhibition archive.</p>
+        <p>Co-organised by C&amp;G Artpartment and Dr Wayne Wong of the University of Sheffield, and funded by the British Academy, the exhibition ran at C&amp;G Artpartment from 20 August to 18 September 2026. The work continues online, with a map of the Sheffield locations behind each photograph and an exhibition archive.</p>
         <ul class="feature-facts">
           <li>Ten collaborators</li>
           <li>Hong Kong cinema, Sheffield places</li>
@@ -1059,29 +1061,29 @@
       </div>
       <div class="feature-visual">
         <div class="feature-frame">
-          <img src="assets/events/streets-on-screen-banner.jpg" alt="Streets on Screen title graphic in red, teal and yellow blocks: Re-imagining Hong Kong and Sheffield Through Cinema" loading="lazy">
-        </div>
-        <div class="feature-pairs">
-          <figure class="feature-pair">
-            <img src="assets/events/streets-on-screen-sony.jpg" alt="Side by side: a still from Rouge (1987) of a man and a woman on a dark staircase, and Sony's Sheffield photograph recreating the scene on an outdoor stone staircase" loading="lazy">
-            <figcaption class="feature-pair-body">
-              <p class="feature-pair-meta"><span>Sony</span><span lang="zh-Hant">胭脂扣 &middot; 1987</span></p>
-              <h3>Staircases between two worlds</h3>
-              <p>Sheffield&rsquo;s staircases recall <em>Rouge</em>, where a darkly comic exchange turns &ldquo;above&rdquo; and &ldquo;below&rdquo; into a conversation between the living and the dead.</p>
-              <ul class="feature-tags"><li>Memory</li><li>Dark humour</li></ul>
-            </figcaption>
-          </figure>
-          <figure class="feature-pair">
-            <img src="assets/events/streets-on-screen-claire.jpg" alt="Side by side: a still from In the Mood for Love (2000) of a weathered wall on a narrow street, and Claire Li's Sheffield photograph of the red-brick Portland Works" loading="lazy">
-            <figcaption class="feature-pair-body">
-              <p class="feature-pair-meta"><span>Claire Li</span><span lang="zh-Hant">花樣年華 &middot; 2000</span></p>
-              <h3>Quiet witnesses to time</h3>
-              <p>A weathered wall and a station clock hold the feelings of waiting, secrets and regret as the city moves around them.</p>
-              <ul class="feature-tags"><li>Time</li><li>Memory</li></ul>
-            </figcaption>
-          </figure>
+          <img src="assets/events/streets-on-screen-banner.jpg" alt="Streets on Screen poster: an abstract red, teal and yellow cityscape blending Sheffield and Hong Kong, with the title and the words Re-imagining Hong Kong and Sheffield Through Cinema" loading="lazy" width="1100" height="1556">
         </div>
       </div>
+    </div>
+    <div class="feature-pairs">
+      <figure class="feature-pair">
+        <img src="assets/events/streets-on-screen-sony.jpg" alt="Side by side: a still from Rouge (1987) of a man and a woman on a dark staircase, and Sony's Sheffield photograph recreating the scene on an outdoor stone staircase" loading="lazy">
+        <figcaption class="feature-pair-body">
+          <p class="feature-pair-meta"><span>Sony</span><span lang="zh-Hant">胭脂扣 &middot; 1987</span></p>
+          <h3>Staircases between two worlds</h3>
+          <p>Sheffield&rsquo;s staircases recall <em>Rouge</em>, where a darkly comic exchange turns &ldquo;above&rdquo; and &ldquo;below&rdquo; into a conversation between the living and the dead.</p>
+          <ul class="feature-tags"><li>Memory</li><li>Dark humour</li></ul>
+        </figcaption>
+      </figure>
+      <figure class="feature-pair">
+        <img src="assets/events/streets-on-screen-claire.jpg" alt="Side by side: a still from In the Mood for Love (2000) of a weathered wall on a narrow street, and Claire Li's Sheffield photograph of the red-brick Portland Works" loading="lazy">
+        <figcaption class="feature-pair-body">
+          <p class="feature-pair-meta"><span>Claire Li</span><span lang="zh-Hant">花樣年華 &middot; 2000</span></p>
+          <h3>Quiet witnesses to time</h3>
+          <p>A weathered wall and a station clock hold the feelings of waiting, secrets and regret as the city moves around them.</p>
+          <ul class="feature-tags"><li>Time</li><li>Memory</li></ul>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
